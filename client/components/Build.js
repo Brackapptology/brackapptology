@@ -5,37 +5,78 @@ import { fetchRPI, fetchBPI } from '../store/index';
 
 class Build extends Component {
 
-    // componentDidMount() {
-    //     this.props.loadRPI();
-    //     this.props.loadBPI();
-    // }
+    constructor() {
+        super();
+        this.state = {
+            teams: {},
+            teamNames: []
+        }
+    }
 
+    componentDidMount() {
+        this.combineRPIandBPI()
+    }
 
+    combineRPIandBPI() {
+        const bpi = this.props.espnBPI;
+        const rpi = this.props.espnRPI;
+
+        for (let bpiTeam in bpi) {
+            for (let rpiTeam in rpi) {
+                if (bpiTeam.startsWith(rpiTeam) && !rpi[rpiTeam].bpi) {
+                    rpi[rpiTeam] = Object.assign(rpi[rpiTeam], bpi[bpiTeam])
+                }
+            }
+        }
+        const teamNames = Object.keys(rpi)
+        this.setState({ teams: rpi, teamNames });
+
+    }
+
+    populateTeamCards() {
+        const teams = this.state.teams;
+        const teamNames = this.state.teamNames;
+
+        return teamNames.map(team => {
+            return (
+                <div key={team}>
+                    <h3>{team}</h3>
+                    <h5>{teams[team].conf}</h5>
+                    <h5>Record: {teams[team].record}</h5>
+                    <p>BPI: {teams[team].bpi}</p>
+                    <p>SOS: {teams[team].sos}</p>
+                    <p>SOR: {teams[team].sor}</p>
+                    <p>RPI: {teams[team].rpi}</p>
+                    <p>vs. RPI 1-25: {teams[team].t25}</p>
+                    <p>vs. RPI 26-50: {teams[team].t50}</p>
+                    <p>vs. RPI 51-100: {teams[team].t100}</p>
+                </div>
+            )
+        })
+        
+        // for (let team in teams) {
+        //     return (
+        //         <div key={team}>
+        //             <h3>{team}</h3>
+        //             <h5>{teams[team].conf}</h5>
+        //             <h5>Record: {teams[team].record}</h5>
+        //             <p>BPI: {teams[team].bpi}</p>
+        //             <p>SOS: {teams[team].sos}</p>
+        //             <p>SOR: {teams[team].sor}</p>
+        //             <p>RPI: {teams[team].rpi}</p>
+        //             <p>vs. RPI 1-25: {teams[team].t25}</p>
+        //             <p>vs. RPI 26-50: {teams[team].t50}</p>
+        //             <p>vs. RPI 51-100: {teams[team].t100}</p>
+        //         </div>
+        //     )
+        // }
+    }
 
     render() {
         return (
             <div>
                 {
-                    this.props.espnBPI.map(team => {
-                        return (
-                            <ul key={Object.keys(team)[0]}>
-                                <li>BPI: {team[Object.keys(team)[0]].bpi}</li>
-                            </ul>
-                        )
-                    })
-                }
-                {
-                    this.props.espnRPI.map(team => {
-                        return (
-                            <ul key={Object.keys(team)[0]}>
-                                <li>Team: {Object.keys(team)[0]}</li>
-                                <li>RPI: {team[Object.keys(team)[0]].rpi}</li>
-                                <li>vs. RPI 1-25: {team[Object.keys(team)[0]].t25}</li>
-                                <li>vs. RPI 26-50: {team[Object.keys(team)[0]].t50}</li>
-                                <li>vs. RPI 51-100: {team[Object.keys(team)[0]].t100}</li>
-                            </ul>
-                        )
-                    })
+                    this.populateTeamCards.call(this)
                 }
             </div>
         )
