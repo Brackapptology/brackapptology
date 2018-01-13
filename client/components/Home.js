@@ -1,36 +1,39 @@
 import React, { Component } from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchRPI, fetchBPI } from '../store/index';
+import { fetchRPI, fetchBPI, fetchChamps } from '../store/index';
 
 class Home extends Component {
     
     componentDidMount() {
-        this.props.loadRPI();
-        this.props.loadBPI();
+        this.props.loadInitialData();
     }
     
     render() {
-        return (
-            <NavLink to='/build'><button>Build your bracket</button></NavLink>
-        )
+       if (Object.keys(this.props.espnRPI).length === 351 && Object.keys(this.props.espnBPI).length === 351) {
+            return (
+                <NavLink to='/build'><button>Build your bracket</button></NavLink>
+            )
+        } else {
+            return null
+        }
     }
 }
 
 const mapState = (state) => {
     return {
         espnRPI: state.espnRPI,
-        espnBPI: state.espnBPI
+        espnBPI: state.espnBPI,
+        confChamps: state.confChamps
     }
 }
 
 const mapDispatch = (dispatch) => {
     return {
-        loadRPI() {
-            dispatch(fetchRPI())
-        },
-        loadBPI() {
-            dispatch(fetchBPI())
+        loadInitialData() {
+            dispatch(fetchRPI());
+            dispatch(fetchBPI());
+            dispatch(fetchChamps());
         }
     }
 }
