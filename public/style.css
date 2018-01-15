@@ -27,7 +27,8 @@ form div {
 #field {
   display: flex;
   flex-wrap: wrap;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .team-card {
@@ -36,5 +37,4 @@ form div {
   width: 200px;
   padding-left: 10px;
   padding-bottom: 10px;
-  text-align: left;
 }

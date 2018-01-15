@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class Build extends Component {
 
@@ -8,7 +9,11 @@ class Build extends Component {
         super();
         this.state = {
             teams: {},
-            field: []
+            field: [],
+            submitField: [],
+            lastFour: [],
+            bubblePop: [],
+            submitted: false
         }
     }
 
@@ -31,7 +36,7 @@ class Build extends Component {
 
         for (let bpiTeam in bpi) {
             for (let rpiTeam in rpi) {
-                if (bpiTeam.startsWith(rpiTeam) && !rpi[rpiTeam].bpi) {
+                if (bpiTeam === rpiTeam && !rpi[rpiTeam].bpi) {
                     rpi[rpiTeam] = Object.assign(rpi[rpiTeam], bpi[bpiTeam])
                 }
             }
@@ -48,13 +53,11 @@ class Build extends Component {
             return team !== undefined
         })
 
-
         this.setState({ teams: rpi, field });
 
     }
 
     populateTeamCards() {
-        const teams = this.state.teams;
         const field = this.state.field;
 
         return field.map((teamObj, idx) => {
@@ -116,12 +119,64 @@ class Build extends Component {
         this.setState({ field: teams })
     }
 
+    find68() {
+        const oldField = this.state.field;
+        let newField = [];
+        let atLarge = 0;
+        let teamsInField = 0;
+        let lastFour = [];
+        let bubblePop = [];
+
+        oldField.forEach((teamObj, idx) => {
+            const team = Object.keys(teamObj)[0];
+            if (!teamObj[team].isChamp && atLarge < 36 && teamsInField < 68) {
+                if (atLarge > 31) {
+                    lastFour.push(team);
+                }
+                atLarge++;
+                teamsInField++;
+                newField.push(team);
+            }  else if (teamObj[team].isChamp && teamsInField < 68) {
+                teamsInField++;
+                newField.push(team);
+            }   else if (!teamObj[team].isChamp && atLarge === 36 && bubblePop.length < 10) {
+                bubblePop.push(team);
+            }    
+        }) 
+        this.setState({ submitField: newField, lastFour, bubblePop, submitted: true });
+    }
+
+    createBracket() {
+        console.log(this.state.submitField, this.state.lastFour, this.state.bubblePop);
+        const field = this.state.submitField.concat(this.state.lastFour).concat(this.state.bubblePop);
+        axios.post('/api/bracket/create', {
+            field,
+            userId: 1 // eventually value will be linked to session user
+        })
+            .catch(console.error)
+    }
+
     render() {
         return (
-            <div id='field'>
+            <div>
                 {
-                    this.populateTeamCards.call(this)
+                    !this.state.submitted
+                        ?
+                        <button onClick={this.find68.bind(this)}>Submit</button>
+                        :
+                        (
+                            <div>
+                                <p>Are you sure?</p>
+                                <button onClick={this.createBracket.bind(this)}>Yes</button>
+                            </div>
+                        )
+
                 }
+                <div id='field'>
+                    {
+                        this.populateTeamCards.call(this)
+                    }
+                </div>
             </div>
         )
     }
