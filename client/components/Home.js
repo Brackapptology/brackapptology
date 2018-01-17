@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchRPI, fetchBPI, fetchChamps } from '../store/index';
+import RaisedButton from 'material-ui/RaisedButton';
+import Progress from './Progress';
 
 class Home extends Component {
     
@@ -12,10 +14,12 @@ class Home extends Component {
     render() {
        if (Object.keys(this.props.espnRPI).length === 351 && Object.keys(this.props.espnBPI).length === 351) {
             return (
-                <NavLink to='/build'><button>Build your bracket</button></NavLink>
+                <NavLink to='/build'><RaisedButton label="Build your bracket"/></NavLink>
             )
         } else {
-            return null
+            return (
+                <Progress />
+            )
         }
     }
 }

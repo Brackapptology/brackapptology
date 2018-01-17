@@ -7,4 +7,5 @@ export {default as Main} from './main'
 export {default as UserHome} from './user-home'
 export {default as Home} from './Home';
 export {default as Build} from './Build';
-export {Login, Signup} from './auth-form'
+export {Login, Signup} from './auth-form';
+export {default as NavBar} from './NavBar';

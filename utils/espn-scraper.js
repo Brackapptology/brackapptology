@@ -30,15 +30,17 @@ const espnRPI = (uri, req, res, next) => {
                         rank = currentRank;
                     }
                     currentRank++;
+                    let record = dataArr[i + 3];
                     let t25 = dataArr[i + 9];
                     let t50 = dataArr[i + 10];
                     let t100 = dataArr[i + 11];
                     if (team !== 'TEAM') {
                         rankings[team] = {
                             rpi: rank,
-                            t25: t25,
-                            t50: t50,
-                            t100: t100
+                            record,
+                            t25,
+                            t50,
+                            t100
                         }
                     }
                 }
@@ -104,16 +106,14 @@ const espnBPI = (uri, req, res, next) => {
                 team = shaveBPI(team);
                 let rank = dataArr[i];
                 let conf = dataArr[i + 2];
-                let record = dataArr[i + 3];
                 let sos = dataArr[i + 5];
                 let sor = dataArr[i + 6];
 
                 rankings[team] = {
                     bpi: rank,
-                    conf: conf,
-                    record: record,
-                    sos: sos,
-                    sor: sor
+                    conf,
+                    sos,
+                    sor
                 }
             }
             res.json(rankings)
