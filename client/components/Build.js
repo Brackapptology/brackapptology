@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import store, { addBracket, addLastFour } from '../store';
 import { Paper, RaisedButton } from 'material-ui';
 import ArrowUp from 'material-ui/svg-icons/navigation/arrow-upward';
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-downward';
@@ -161,12 +162,18 @@ class Build extends Component {
     }
 
     createBracket() {
-        console.log(this.state.submitField, this.state.lastFour, this.state.bubblePop);
+        const lastFour = this.state.lastFour;
+        const bubblePop = this.state.bubblePop;
         const field = this.state.submitField.concat(this.state.lastFour).concat(this.state.bubblePop);
         axios.post('/api/bracket/create', {
             field,
-            userId: 1 // eventually value will be linked to session user
+            lastFour,
+            bubblePop
         })
+            .then(bracket => {
+                store.dispatch(addBracket(bracket.data.field));
+                store.dispatch(addLastFour(bracket.data.lastFour));
+            })
             .catch(console.error)
     }
 
@@ -177,28 +184,28 @@ class Build extends Component {
                     !this.state.submitted
                         ?
                         <RaisedButton label="Submit" onClick={this.find68.bind(this)} />
-                            :
+                        :
                         (
                             <div>
                                 <p>Are you sure?</p>
-                                <button onClick={this.createBracket.bind(this)}>Yes</button>
+                                <NavLink to="/new-bracket"><RaisedButton label="Yes" onClick={this.createBracket.bind(this)} /></NavLink>
                             </div>
-                            )
+                        )
 
                 }
                 <div id='field'>
-                                {
-                                    this.populateTeamCards.call(this)
-                                }
-                            </div>
+                    {
+                        this.populateTeamCards.call(this)
+                    }
+                </div>
             </div>
         )
-                }
+    }
 }
 
 const mapState = (state) => {
     return {
-                    espnRPI: state.espnRPI,
+        espnRPI: state.espnRPI,
         espnBPI: state.espnBPI,
         confChamps: state.confChamps
     }
@@ -206,13 +213,13 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
     return {
-                    // loadRPI() {
-                    //     dispatch(fetchRPI())
-                    // },
-                    // loadBPI() {
-                    //     dispatch(fetchBPI())
-                    // }
-                }
-                }
+        // loadRPI() {
+        //     dispatch(fetchRPI())
+        // },
+        // loadBPI() {
+        //     dispatch(fetchBPI())
+        // }
+    }
+}
 
 export default withRouter(connect(mapState, mapDispatch)(Build));

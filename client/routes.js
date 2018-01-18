@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Route, Switch, Router} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
-import {Main, Login, Signup, UserHome, Home, Build} from './components';
+import {Main, Login, Signup, UserHome, Home, Build, NewBracket} from './components';
 import {me} from './store'
 
 /**
@@ -26,6 +26,7 @@ class Routes extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/build" component={Build} />
+            <Route path="/new-bracket" component={NewBracket} />
             {
               isLoggedIn &&
                 <Switch>

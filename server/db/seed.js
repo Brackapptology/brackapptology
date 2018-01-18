@@ -4,8 +4,7 @@ const db = require('./db');
 const data = {
     users: [
         {
-            firstName: 'Pauly',
-            lastName: 'Paulicap',
+            name: 'Pauly Paulicap',
             userName: 'pauly33',
             isAdmin: false,
             email: 'pauly@pauly.com',
@@ -13,8 +12,7 @@ const data = {
         },
 
         {
-            firstName: 'Dundrecous',
-            lastName: 'Nelson',
+            name: 'Dundrecous Nelson',
             userName: 'drecyoself',
             isAdmin: true,
             email: 'dundrecous@dundrecous.com',

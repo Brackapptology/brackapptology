@@ -9,3 +9,4 @@ export {default as Home} from './Home';
 export {default as Build} from './Build';
 export {Login, Signup} from './auth-form';
 export {default as NavBar} from './NavBar';
+export {default as NewBracket} from './NewBracket';

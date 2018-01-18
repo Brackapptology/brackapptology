@@ -19,7 +19,7 @@ const Main = (props) => {
   return (
     <div>
       <NavBar />
-     {/* <nav>
+      <nav>
         {
           isLoggedIn
             ? <div>
@@ -33,7 +33,7 @@ const Main = (props) => {
         }
       </nav>
       <hr />
-      */}
+      
       {children}
     </div>
   )
