@@ -37,3 +37,8 @@ form div {
   padding-left: 10px;
   padding-bottom: 10px;
 }
+
+.new-bracket-team {
+  display: inline;
+  margin: 10px;
+}
