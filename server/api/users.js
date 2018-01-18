@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User} = require('../db/models')
+const { User, Bracket } = require('../db/models')
 module.exports = router
 
 router.get('/', (req, res, next) => {
@@ -11,4 +11,19 @@ router.get('/', (req, res, next) => {
   })
     .then(users => res.json(users))
     .catch(next)
+})
+
+router.get('/:id', async (req, res, next) => {
+  if (req.user.id === Number(req.params.id)) {
+    Bracket.findAll({
+      where: {
+        userId: Number(req.params.id)
+      }
+    })
+      .then(brackets => res.json(brackets))
+      .catch(next);
+  }
+  else {
+    res.status(401).redirect('/')
+  }
 })

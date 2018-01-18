@@ -1,3 +1,4 @@
+import axios from 'axios';
 
 const GET_BRACKETS = 'GET_BRACKETS';
 const ADD_BRACKET = 'ADD_BRACKET';
@@ -13,6 +14,17 @@ export const addBracket = (bracket) => {
     return {
         type: ADD_BRACKET,
         bracket
+    }
+}
+
+export function fetchUserBrackets(userId) {
+    return function thunk(dispatch) {
+        return axios.get(`/api/users/${userId}`)
+            .then(res => res.data)
+            .then(brackets => {
+                dispatch(getBrackets(brackets))
+            }) 
+            .catch(console.error)
     }
 }
 

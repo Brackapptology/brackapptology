@@ -4,17 +4,12 @@ import { connect } from 'react-redux';
 import store from '../store';
 import createSeedlines from '../../utils/createSeedlines';
 
-class NewBracket extends Component {
+export default function UserBracket(props) {
 
-    componentDidMount() {
-        this.render();
-    }
 
-    render() {
-
-        if (this.props.newBracket && this.props.newLastFour) {
+        if (props.field && props.lastFour) {
         
-        const seedLines = createSeedlines(this.props.newBracket, this.props.newLastFour);
+        const seedLines = createSeedlines(props.field, props.lastFour);
             return (
                 <div>
                 {
@@ -39,15 +34,4 @@ class NewBracket extends Component {
         } else {
             return null;
         }
-    }
 }
-
-const mapState = (state) => {
-    return {
-        newBracket: state.currentUserBrackets[state.currentUserBrackets.length - 1],
-        newLastFour: state.userLastFours[state.userLastFours.length - 1]
-    }
-}
-
-
-export default withRouter(connect(mapState)(NewBracket));
