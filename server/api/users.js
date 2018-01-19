@@ -13,17 +13,18 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
-router.get('/:id', async (req, res, next) => {
-  if (req.user.id === Number(req.params.id)) {
-    Bracket.findAll({
-      where: {
-        userId: Number(req.params.id)
-      }
-    })
-      .then(brackets => res.json(brackets))
-      .catch(next);
-  }
-  else {
-    res.status(401).redirect('/')
-  }
+router.get('/:id', (req, res, next) => {
+  User.findById(Number(req.params.id))
+    .then(user => res.json(user))
+    .catch(next);
+})
+
+router.get('/:id/brackets', (req, res, next) => {
+  Bracket.findAll({
+    where: {
+      userId: Number(req.params.id)
+    }
+  })
+    .then(brackets => res.json(brackets))
+    .catch(next);
 })

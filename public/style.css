@@ -43,3 +43,22 @@ form div {
   display: inline;
   margin: 10px;
 }
+
+.user-bracket {
+  display: flex;
+  margin: 20px;
+}
+
+.user-bracket-last-four {
+  margin-bottom: 30px;
+}
+
+.user-page-header {
+  position: relative;
+  margin-bottom: 60px;
+}
+
+.user-page-header-name {
+  position: absolute;
+  left: 100px;
+}

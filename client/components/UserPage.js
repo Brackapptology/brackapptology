@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { fetchUserBrackets, me } from '../store/index';
+import { fetchUserBrackets, me, fetchUserPageData } from '../store/index';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import UserBracket from './UserBracket';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import ListItem from 'material-ui/List/ListItem';
+import Avatar from 'material-ui/Avatar';
 
 const styles = {
     customWidth: {
@@ -23,16 +25,54 @@ class UserPage extends Component {
     }
 
     componentDidMount() {
-        this.props.loadBrackets(Number(this.props.match.params.userId));
+        const id = Number(this.props.match.params.userId)
+        this.props.loadBrackets(id);
         this.props.loadUser();
+        this.props.loadUserPageInfo(id);
     }
 
     handleChange = (event, index, value) => this.setState({ value, bracket: this.props.brackets[value] });
 
     render() {
+
         return (
             <div>
-                <h3>{this.props.user && this.props.user.name}'s Brackets</h3>
+                {
+                    this.props.user.id === Number(this.props.match.params.userId)
+                        ?
+                        <div>
+                            <ListItem
+                                className="user-page-header"
+                                disabled={true}
+                                leftAvatar={
+                                    <Avatar
+                                        src={this.props.user.photoUrl}
+                                        size={75}
+                                    />
+                                }
+                            >
+                                <h1 className="user-page-header-name">{this.props.user && this.props.user.name}</h1>
+                            </ListItem>
+                            <h3>My brackets</h3>
+                        </div>
+                        :
+                        <div>
+                            <ListItem
+                                className="user-page-header"
+                                disabled={true}
+                                leftAvatar={
+                                    <Avatar
+                                        src={this.props.userPage.photoUrl}
+                                        size={75}
+                                    />
+                                }
+                            >
+                                <h1 className="user-page-header-name">{this.props.userPage && this.props.userPage.name}</h1>
+                            </ListItem>
+                            <h3>{this.props.userPage && this.props.userPage.name}'s Brackets</h3>
+                        </div>
+
+                }
                 <div id="user-page-brackets">
                     <div className="bracket-date-selector">
                         {
@@ -73,7 +113,8 @@ class UserPage extends Component {
 const mapState = (state) => {
     return {
         brackets: state.currentUserBrackets,
-        user: state.user
+        user: state.user,
+        userPage: state.userPageInfo
     }
 }
 
@@ -84,6 +125,9 @@ const mapDispatch = (dispatch) => {
         },
         loadUser() {
             dispatch(me())
+        },
+        loadUserPageInfo(id) {
+            dispatch(fetchUserPageData(id))
         }
     }
 }

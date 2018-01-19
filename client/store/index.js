@@ -8,6 +8,7 @@ import espnBPI from './espnBPI';
 import confChamps from './confChamps';
 import currentUserBrackets from './currentUserBrackets';
 import userLastFours from './userLastFours';
+import userPageInfo from './userPage';
 
 const reducer = combineReducers({
   user,
@@ -15,7 +16,8 @@ const reducer = combineReducers({
   espnBPI,
   confChamps,
   currentUserBrackets,
-  userLastFours
+  userLastFours,
+  userPageInfo
 })
 const middleware = composeWithDevTools(applyMiddleware(
   thunkMiddleware,
@@ -30,3 +32,4 @@ export * from './espnBPI';
 export * from './confChamps';
 export * from './currentUserBrackets';
 export * from './userLastFours';
+export * from './userPage';

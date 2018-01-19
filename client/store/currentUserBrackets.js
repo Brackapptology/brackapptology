@@ -19,7 +19,7 @@ export const addBracket = (bracket) => {
 
 export function fetchUserBrackets(userId) {
     return function thunk(dispatch) {
-        return axios.get(`/api/users/${userId}`)
+        return axios.get(`/api/users/${userId}/brackets`)
             .then(res => res.data)
             .then(brackets => {
                 dispatch(getBrackets(brackets))
