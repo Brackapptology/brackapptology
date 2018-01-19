@@ -3,7 +3,6 @@ import { fetchUserBrackets, me } from '../store/index';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import UserBracket from './UserBracket';
-import BracketDate from './BracketDate';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
@@ -31,53 +30,40 @@ class UserPage extends Component {
     handleChange = (event, index, value) => this.setState({ value, bracket: this.props.brackets[value] });
 
     render() {
-        console.log(this.state);
         return (
             <div>
                 <h3>{this.props.user && this.props.user.name}'s Brackets</h3>
                 <div id="user-page-brackets">
-                <div className="bracket-date-selector">
-                {
-                    this.props.brackets
-                        ?
-                        <SelectField
-                    floatingLabelText="Date"
-                    value={this.state.value}
-                    onChange={this.handleChange}
-                >
-                {
-                    this.props.brackets.map((entry, idx) => {
-                        return (
-                            <MenuItem key={idx} value={idx} primaryText={entry.date} />
-                        )
-                    })
-                }
-                </SelectField>
-                        :
-                        null
-                }
-                </div>
-                <div className="user-page-bracket">
-                {
-                    this.state.bracket
-                        ?
-                        <UserBracket field={this.state.bracket.field} lastFour={this.state.bracket.lastFour} />
-                        :
-                        null
-                }
-                </div>
-                    {/*
-                        this.props.brackets && this.props.brackets.map(entry => {
-                            return (
-                                <div key={entry.id}>
-                                    <h5>{entry.date}</h5>
-                                    <h5>Field: </h5>
-                                    <UserBracket field={entry.field} lastFour={entry.lastFour} />
-                                </div>
-                            )
-
-                        })
-                    */}
+                    <div className="bracket-date-selector">
+                        {
+                            this.props.brackets
+                                ?
+                                <SelectField
+                                    floatingLabelText="Date"
+                                    value={this.state.value}
+                                    onChange={this.handleChange}
+                                >
+                                    {
+                                        this.props.brackets.map((entry, idx) => {
+                                            return (
+                                                <MenuItem key={idx} value={idx} primaryText={entry.date} />
+                                            )
+                                        })
+                                    }
+                                </SelectField>
+                                :
+                                null
+                        }
+                    </div>
+                    <div className="user-page-bracket">
+                        {
+                            this.state.bracket
+                                ?
+                                <UserBracket field={this.state.bracket.field} lastFour={this.state.bracket.lastFour} />
+                                :
+                                null
+                        }
+                    </div>
                 </div>
             </div>
         )

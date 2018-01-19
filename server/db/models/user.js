@@ -23,12 +23,6 @@ const User = db.define('user', {
   googleId: {
     type: Sequelize.STRING
   }
-}, {
-  getterMethods: {
-    name() {
-      return this.firstName + ' ' + this.lastName;
-    }
-  }
 })
 
 module.exports = User

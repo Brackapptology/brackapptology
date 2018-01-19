@@ -14,25 +14,11 @@ import NavBar from './NavBar';
  *  rendered out by the component's `children`.
  */
 const Main = (props) => {
-  const {children, handleClick, isLoggedIn} = props
+  const {children} = props
 
   return (
     <div>
       <NavBar />
-      <nav>
-        {
-          isLoggedIn
-            ? <div>
-              <Link to="/home">Home</Link>
-              <a href="#" onClick={handleClick}>Logout</a>
-            </div>
-            : <div>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Sign Up</Link>
-            </div>
-        }
-      </nav>
-      <hr />
       
       {children}
     </div>
