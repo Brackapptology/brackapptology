@@ -13,6 +13,10 @@ router.post('/create', (req, res, next) => {
         })
             .then(bracket => res.json(bracket))
             .catch(next);
+    } else {
+        Bracket.create(req.body)
+            .then(bracket => res.json(bracket))
+            .catch(next);
     }
 })
 

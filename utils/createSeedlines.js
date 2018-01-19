@@ -1,5 +1,5 @@
 export default function createSeedlines(field, lastFour) {
-
+    console.log(field)
     const lastFourStartIdx = field.indexOf(lastFour[0]);
     const lastFourTwoIdx = field.indexOf(lastFour[1]);
     const lastFourThreeIdx = field.indexOf(lastFour[2]);
@@ -7,7 +7,7 @@ export default function createSeedlines(field, lastFour) {
     field[lastFourStartIdx] = field[lastFourStartIdx] + '/' + field[lastFourTwoIdx];
     field[lastFourThreeIdx] = field[lastFourThreeIdx] + '/' + field[lastFourEndIdx];
     field.splice(lastFourTwoIdx, 1);
-    field.splice(lastFourEndIdx, 1);
+    field.splice(lastFourEndIdx - 1, 1);
     
     let seed1 = field.slice(0, 4);
     let seed2 = field.slice(4, 8);

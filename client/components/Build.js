@@ -165,6 +165,7 @@ class Build extends Component {
         const lastFour = this.state.lastFour;
         const bubblePop = this.state.bubblePop;
         const field = this.state.submitField.concat(this.state.lastFour).concat(this.state.bubblePop);
+       
         axios.post('/api/bracket/create', {
             field,
             lastFour,
@@ -207,7 +208,8 @@ const mapState = (state) => {
     return {
         espnRPI: state.espnRPI,
         espnBPI: state.espnBPI,
-        confChamps: state.confChamps
+        confChamps: state.confChamps,
+        userId: !!state.user.id
     }
 }
 
