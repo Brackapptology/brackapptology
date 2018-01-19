@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { fetchUserBrackets, me, fetchUserPageData } from '../store/index';
-import { withRouter } from 'react-router-dom';
+import { fetchUserBrackets, me, fetchUserPageData, fetchUserBracket } from '../store/index';
+import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import UserBracket from './UserBracket';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import ListItem from 'material-ui/List/ListItem';
 import Avatar from 'material-ui/Avatar';
+import history from '../history';
 
 const styles = {
     customWidth: {
@@ -31,7 +32,18 @@ class UserPage extends Component {
         this.props.loadUserPageInfo(id);
     }
 
-    handleChange = (event, index, value) => this.setState({ value, bracket: this.props.brackets[value] });
+    handleChange = (event, index, value) => {
+        this.setState({ value, bracket: this.props.brackets[value] })
+    };
+
+    formatDate(date) {
+        let month = date.slice(5, 7);
+        let day = date.slice(8, 10);
+        let year = date.slice(0, 4);
+        let hour = Number(date.slice(11, 13)) % 12;
+        let minutes = date.slice(14, 16)
+        return month + '/' + day + '/' + year + ' ' + hour + ':' + minutes;
+    }
 
     render() {
 
@@ -84,9 +96,14 @@ class UserPage extends Component {
                                     onChange={this.handleChange}
                                 >
                                     {
-                                        this.props.brackets.map((entry, idx) => {
+                                        this.props.brackets.reverse().map((entry, idx) => {
+                                            let date = this.formatDate(entry.date);
                                             return (
-                                                <MenuItem key={idx} value={idx} primaryText={entry.date} />
+                                                <MenuItem
+                                                    key={idx}
+                                                    value={idx}
+                                                    primaryText={date}
+                                                />
                                             )
                                         })
                                     }
@@ -114,7 +131,8 @@ const mapState = (state) => {
     return {
         brackets: state.currentUserBrackets,
         user: state.user,
-        userPage: state.userPageInfo
+        userPage: state.userPageInfo,
+        userPageBracket: state.userPageBracket
     }
 }
 
@@ -128,6 +146,9 @@ const mapDispatch = (dispatch) => {
         },
         loadUserPageInfo(id) {
             dispatch(fetchUserPageData(id))
+        },
+        loadUserBracket(userId, bracketId) {
+            dispatch(fetchUserBracket(userId, bracketId))
         }
     }
 }

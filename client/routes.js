@@ -27,7 +27,8 @@ class Routes extends Component {
             <Route path="/signup" component={Signup} />
             <Route path="/build" component={Build} />
             <Route path="/new-bracket" component={NewBracket} />
-            <Route path="/users/:userId" component={UserPage} />
+            <Route exact path="/users/:userId" component={UserPage} />
+            <Route path="/users/:userId/brackets/:bracketId" component={UserPage} />
             {/*
               isLoggedIn &&
               <Switch>

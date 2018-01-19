@@ -1,5 +1,4 @@
 export default function createSeedlines(field, lastFour) {
-    console.log(field)
     const lastFourStartIdx = field.indexOf(lastFour[0]);
     const lastFourTwoIdx = field.indexOf(lastFour[1]);
     const lastFourThreeIdx = field.indexOf(lastFour[2]);

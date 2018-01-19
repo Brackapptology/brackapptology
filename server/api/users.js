@@ -28,3 +28,12 @@ router.get('/:id/brackets', (req, res, next) => {
     .then(brackets => res.json(brackets))
     .catch(next);
 })
+
+router.get('/:id/brackets/:bracketId', async (req, res, next) => {
+  let brackets = await Bracket.findAll({
+    where: {
+      userId: Number(req.params.id)
+    }
+  })
+  res.json(brackets[Number(req.params.bracketId) - 1])
+})

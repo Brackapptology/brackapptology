@@ -9,6 +9,7 @@ import confChamps from './confChamps';
 import currentUserBrackets from './currentUserBrackets';
 import userLastFours from './userLastFours';
 import userPageInfo from './userPage';
+import userPageBracket from './userPageBracket';
 
 const reducer = combineReducers({
   user,
@@ -17,7 +18,8 @@ const reducer = combineReducers({
   confChamps,
   currentUserBrackets,
   userLastFours,
-  userPageInfo
+  userPageInfo,
+  userPageBracket
 })
 const middleware = composeWithDevTools(applyMiddleware(
   thunkMiddleware,
@@ -33,3 +35,4 @@ export * from './confChamps';
 export * from './currentUserBrackets';
 export * from './userLastFours';
 export * from './userPage';
+export * from './userPageBracket';
