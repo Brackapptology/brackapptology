@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
+import {TextField, RaisedButton} from 'material-ui';
+import { black } from 'material-ui/styles/colors';
 
 /**
  * COMPONENT
@@ -10,22 +12,18 @@ const AuthForm = (props) => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <div>
+    <div className="credential-form">
       <form onSubmit={handleSubmit} name={name}>
+      <TextField name="email" hintText="Email" hintStyle={{color: black}} />
+      <br />
+      <TextField name="password" type="password" hintText="Password" hintStyle={{color: black}} />
+      <br />
         <div>
-          <label htmlFor="email"><small>Email</small></label>
-          <input name="email" type="text" />
-        </div>
-        <div>
-          <label htmlFor="password"><small>Password</small></label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
+          <button id="login-button" type="submit">{displayName}</button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
+      <button id="google-login-button"><a href="/auth/google">{displayName} with Google</a></button>
     </div>
   )
 }
