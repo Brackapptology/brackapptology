@@ -31,6 +31,7 @@ class NewBracket extends Component {
                                 return (
                                     <div key={idx}>
                                         <h5>No. {idx + 1} seeds</h5>
+                                        <div className="new-bracket-seed-line">
                                         {
                                             line.map(team => {
                                                 return (
@@ -38,6 +39,7 @@ class NewBracket extends Component {
                                                 )
                                             })
                                         }
+                                        </div>
                                     </div>
                                 )
                             })

@@ -6,6 +6,7 @@ import store, { addBracket, addLastFour } from '../store';
 import { Paper, RaisedButton } from 'material-ui';
 import ArrowUp from 'material-ui/svg-icons/navigation/arrow-upward';
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-downward';
+import SubmitBracket from './SubmitBracket';
 
 class Build extends Component {
 
@@ -76,17 +77,17 @@ class Build extends Component {
         return field.map((teamObj, idx) => {
             const team = Object.keys(teamObj)[0];
             return (
-                <Paper key={team} style={style} zDepth={5}>
+                // <Paper key={team} style={style} zDepth={5} className="team-card-paper">
                     <div className='team-card'>
-                        <h3>{idx + 1 + '. ' + team}</h3>
+                        <h3 className="team-card-name">{idx + 1 + '. ' + team}</h3>
                         {
                             teamObj[team].isChamp
                                 ?
-                                <h5>{teamObj[team].conf} <small>Proj. Champ</small></h5>
+                                <h5 className="team-card-small-header">{teamObj[team].conf} <small>Proj. Champ</small></h5>
                                 :
-                                <h5>{teamObj[team].conf}</h5>
+                                <h5 className="team-card-small-header">{teamObj[team].conf}</h5>
                         }
-                        <h5>Record: {teamObj[team].record}</h5>
+                        <h5 className="team-card-small-header">Record: {teamObj[team].record}</h5>
                         <p>BPI: {teamObj[team].bpi}</p>
                         <p>SOS: {teamObj[team].sos}</p>
                         <p>SOR: {teamObj[team].sor}</p>
@@ -109,7 +110,7 @@ class Build extends Component {
                                 null
                         }
                     </div>
-                </Paper>
+                // </Paper>
             )
         })
     }
@@ -134,8 +135,9 @@ class Build extends Component {
         this.setState({ field: teams })
     }
 
-    find68() {
-        const oldField = this.state.field;
+    find68(field) {
+        // const oldField = this.state.field;
+        const oldField = field;
         let newField = [];
         let atLarge = 0;
         let teamsInField = 0;
@@ -158,14 +160,15 @@ class Build extends Component {
                 bubblePop.push(team);
             }
         })
-        this.setState({ submitField: newField, lastFour, bubblePop, submitted: true });
+        return { submitField: newField, lastFour, bubblePop, submitted: true }
+        // this.setState({ submitField: newField, lastFour, bubblePop, submitted: true });
     }
 
-    createBracket() {
-        const lastFour = this.state.lastFour;
-        const bubblePop = this.state.bubblePop;
-        const field = this.state.submitField.concat(this.state.lastFour).concat(this.state.bubblePop);
-       
+    createBracket(submitField, lastFour, bubblePop) {
+        // const lastFour = this.state.lastFour;
+        // const bubblePop = this.state.bubblePop;
+        // const field = this.state.submitField.concat(this.state.lastFour).concat(this.state.bubblePop);
+       const field = submitField.concat(lastFour).concat(bubblePop)
         axios.post('/api/bracket/create', {
             field,
             lastFour,
@@ -181,10 +184,11 @@ class Build extends Component {
     render() {
         return (
             <div>
-                {
+                <SubmitBracket find68={this.find68} create={this.createBracket} field={this.state.field} />
+                {/*
                     !this.state.submitted
                         ?
-                        <RaisedButton label="Submit" onClick={this.find68.bind(this)} />
+                        <RaisedButton label="Submit" onClick={this.find68.bind(this)} className="build-submit" />
                         :
                         (
                             <div>
@@ -193,7 +197,7 @@ class Build extends Component {
                             </div>
                         )
 
-                }
+                    */}
                 <div id='field'>
                     {
                         this.populateTeamCards.call(this)

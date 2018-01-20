@@ -19,6 +19,7 @@ export default function UserBracket(props) {
                             return (
                                 <div key={idx}>
                                     <h5>No. {idx + 1} seeds</h5>
+                                    <div className="new-bracket-seed-line">
                                     {
                                         line.map(team => {
                                             return (
@@ -26,6 +27,7 @@ export default function UserBracket(props) {
                                             )
                                         })
                                     }
+                                    </div>
                                 </div>
                             )
                         })

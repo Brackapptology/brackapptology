@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchRPI, fetchBPI, fetchChamps } from '../store/index';
 import RaisedButton from 'material-ui/RaisedButton';
 import Progress from './Progress';
+import CredentialsDialog from './CredentialsDialog';
 
 class Home extends Component {
     
@@ -12,9 +13,12 @@ class Home extends Component {
     }
     
     render() {
-       if (Object.keys(this.props.espnRPI).length === 351 && Object.keys(this.props.espnBPI).length === 351) {
+       if (Object.keys(this.props.espnRPI).length > 340 && Object.keys(this.props.espnBPI).length > 340) {
             return (
-                <NavLink to='/build'><RaisedButton label="Build your bracket"/></NavLink>
+                <div>
+                <NavLink to='/build'><RaisedButton label="Build your bracket" /></NavLink>
+                <CredentialsDialog />
+                </div>
             )
         } else {
             return (

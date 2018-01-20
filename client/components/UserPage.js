@@ -48,11 +48,11 @@ class UserPage extends Component {
     render() {
 
         return (
-            <div>
+            <div className="user-page">
                 {
                     this.props.user.id === Number(this.props.match.params.userId)
                         ?
-                        <div>
+                        <div className="user-page-top-chunk">
                             <ListItem
                                 className="user-page-header"
                                 disabled={true}
@@ -65,10 +65,38 @@ class UserPage extends Component {
                             >
                                 <h1 className="user-page-header-name">{this.props.user && this.props.user.name}</h1>
                             </ListItem>
+                            <div className="user-page-brackets">
                             <h3>My brackets</h3>
+                                <div className="bracket-date-selector">
+                                    {
+                                        this.props.brackets
+                                            ?
+                                            <SelectField
+                                                floatingLabelText="Date"
+                                                value={this.state.value}
+                                                onChange={this.handleChange}
+                                            >
+                                                {
+                                                    this.props.brackets.reverse().map((entry, idx) => {
+                                                        let date = this.formatDate(entry.date);
+                                                        return (
+                                                            <MenuItem
+                                                                key={idx}
+                                                                value={idx}
+                                                                primaryText={date}
+                                                            />
+                                                        )
+                                                    })
+                                                }
+                                            </SelectField>
+                                            :
+                                            null
+                                    }
+                                </div>
+                            </div>
                         </div>
                         :
-                        <div>
+                        <div className="user-page-top-chunk">
                             <ListItem
                                 className="user-page-header"
                                 disabled={true}
@@ -81,46 +109,46 @@ class UserPage extends Component {
                             >
                                 <h1 className="user-page-header-name">{this.props.userPage && this.props.userPage.name}</h1>
                             </ListItem>
+                            <div className="user-page-brackets">
                             <h3>{this.props.userPage && this.props.userPage.name}'s Brackets</h3>
-                        </div>
-
-                }
-                <div id="user-page-brackets">
-                    <div className="bracket-date-selector">
-                        {
-                            this.props.brackets
-                                ?
-                                <SelectField
-                                    floatingLabelText="Date"
-                                    value={this.state.value}
-                                    onChange={this.handleChange}
-                                >
+                                <div className="bracket-date-selector">
                                     {
-                                        this.props.brackets.reverse().map((entry, idx) => {
-                                            let date = this.formatDate(entry.date);
-                                            return (
-                                                <MenuItem
-                                                    key={idx}
-                                                    value={idx}
-                                                    primaryText={date}
-                                                />
-                                            )
-                                        })
+                                        this.props.brackets
+                                            ?
+                                            <SelectField
+                                                floatingLabelText="Date"
+                                                value={this.state.value}
+                                                onChange={this.handleChange}
+                                            >
+                                                {
+                                                    this.props.brackets.reverse().map((entry, idx) => {
+                                                        let date = this.formatDate(entry.date);
+                                                        return (
+                                                            <MenuItem
+                                                                key={idx}
+                                                                value={idx}
+                                                                primaryText={date}
+                                                            />
+                                                        )
+                                                    })
+                                                }
+                                            </SelectField>
+                                            :
+                                            null
                                     }
-                                </SelectField>
-                                :
-                                null
-                        }
-                    </div>
-                    <div className="user-page-bracket">
-                        {
-                            this.state.bracket
-                                ?
-                                <UserBracket field={this.state.bracket.field} lastFour={this.state.bracket.lastFour} />
-                                :
-                                null
-                        }
-                    </div>
+                                </div>
+                            </div>
+                        </div>
+                }
+
+                <div className="user-page-bracket">
+                    {
+                        this.state.bracket
+                            ?
+                            <UserBracket field={this.state.bracket.field} lastFour={this.state.bracket.lastFour} />
+                            :
+                            null
+                    }
                 </div>
             </div>
         )
