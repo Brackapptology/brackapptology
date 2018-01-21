@@ -37,11 +37,11 @@ class UserPage extends Component {
     }
 
     handleChange = (event, index, value) => {
-        const bracktId = this.props.brackets.length;
-        const url = `/users/${Number(this.props.match.params.userId)}/brackets/${bracktId}`
+        const bracketId = this.props.brackets.length - value + 1;
+        const url = `/users/${Number(this.props.match.params.userId)}/brackets/${bracketId}`
         this.setState({
             value,
-            bracket: this.props.brackets[bracktId - 1],
+            bracket: this.props.brackets[bracketId - 1],
             url
         })
     };
@@ -57,6 +57,7 @@ class UserPage extends Component {
                 reversedBrackets.push(this.props.brackets[i])
             }
         }
+
         return (
             <div className="user-page">
                 {
@@ -102,11 +103,10 @@ class UserPage extends Component {
                                                 <SelectField
                                                     floatingLabelText="Date"
                                                     value={this.state.value}
-                                                    onChange={this.handleChange}
+                                                    onChange={this.handleChange.bind(this)}
                                                 >
                                                     {
                                                         reversedBrackets.map((entry, idx) => {
-                                                            console.log(entry)
                                                             let date = formatDate(entry.date);
                                                             return (
                                                                 <MenuItem
@@ -163,7 +163,7 @@ class UserPage extends Component {
                                                 <SelectField
                                                     floatingLabelText="Date"
                                                     value={this.state.value}
-                                                    onChange={this.handleChange}
+                                                    onChange={this.handleChange.bind(this)}
                                                 >
                                                     {
                                                         reversedBrackets.map((entry, idx) => {

@@ -8,7 +8,6 @@ import {Divider, RaisedButton} from 'material-ui';
 
 export default function UserBracket(props) {
 
-    console.log(props)
 
     if (props.field && props.lastFour) {
 
@@ -52,7 +51,7 @@ export default function UserBracket(props) {
                     <div className="user-bracket-bubble-burst">
                         <h3>Bubbles burst</h3>
                         {
-                            props.field.slice(72).map(team => {
+                            props.field.slice(64).map(team => {
                                 return (
                                     <p key={team}>{team}</p>
                                 )
