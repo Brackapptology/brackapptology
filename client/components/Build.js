@@ -7,6 +7,7 @@ import { Paper, RaisedButton } from 'material-ui';
 import ArrowUp from 'material-ui/svg-icons/navigation/arrow-upward';
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-downward';
 import SubmitBracket from './SubmitBracket';
+import BuildHelp from './BuildHelp'
 
 class Build extends Component {
 
@@ -68,7 +69,6 @@ class Build extends Component {
             height: 440,
             width: 220,
             margin: 20,
-            // textAlign: 'center',
             display: 'inline-block',
         };
 
@@ -78,38 +78,38 @@ class Build extends Component {
             const team = Object.keys(teamObj)[0];
             return (
                 // <Paper key={team} style={style} zDepth={5} className="team-card-paper">
-                    <div className='team-card'>
-                        <h3 className="team-card-name">{idx + 1 + '. ' + team}</h3>
-                        {
-                            teamObj[team].isChamp
-                                ?
-                                <h5 className="team-card-small-header">{teamObj[team].conf} <small>Proj. Champ</small></h5>
-                                :
-                                <h5 className="team-card-small-header">{teamObj[team].conf}</h5>
-                        }
-                        <h5 className="team-card-small-header">Record: {teamObj[team].record}</h5>
-                        <p>BPI: {teamObj[team].bpi}</p>
-                        <p>SOS: {teamObj[team].sos}</p>
-                        <p>SOR: {teamObj[team].sor}</p>
-                        <p>RPI: {teamObj[team].rpi}</p>
-                        <p>vs. RPI 1-25: {teamObj[team].t25}</p>
-                        <p>vs. RPI 26-50: {teamObj[team].t50}</p>
-                        <p>vs. RPI 51-100: {teamObj[team].t100}</p>
-                        {
-                            idx > 0
-                                ?
-                                <ArrowUp onClick={this.moveTeam.bind(this, idx, true)} />
-                                :
-                                null
-                        }
-                        {
-                            idx < field.length - 1
-                                ?
-                                <ArrowDown onClick={this.moveTeam.bind(this, idx, false)} />
-                                :
-                                null
-                        }
-                    </div>
+                <div className='team-card'>
+                    <h3 className="team-card-name">{idx + 1 + '. ' + team}</h3>
+                    {
+                        teamObj[team].isChamp
+                            ?
+                            <h5 className="team-card-small-header">{teamObj[team].conf} <small>Proj. Champ</small></h5>
+                            :
+                            <h5 className="team-card-small-header">{teamObj[team].conf}</h5>
+                    }
+                    <p>Record: {teamObj[team].record}</p>
+                    <p>BPI: {teamObj[team].bpi}</p>
+                    <p>SOS: {teamObj[team].sos}</p>
+                    <p>SOR: {teamObj[team].sor}</p>
+                    <p>RPI: {teamObj[team].rpi}</p>
+                    <p>vs. RPI 1-25: {teamObj[team].t25}</p>
+                    <p>vs. RPI 26-50: {teamObj[team].t50}</p>
+                    <p>vs. RPI 51-100: {teamObj[team].t100}</p>
+                    {
+                        idx > 0
+                            ?
+                            <ArrowUp onClick={this.moveTeam.bind(this, idx, true)} />
+                            :
+                            null
+                    }
+                    {
+                        idx < field.length - 1
+                            ?
+                            <ArrowDown onClick={this.moveTeam.bind(this, idx, false)} />
+                            :
+                            null
+                    }
+                </div>
                 // </Paper>
             )
         })
@@ -168,7 +168,7 @@ class Build extends Component {
         // const lastFour = this.state.lastFour;
         // const bubblePop = this.state.bubblePop;
         // const field = this.state.submitField.concat(this.state.lastFour).concat(this.state.bubblePop);
-       const field = submitField.concat(lastFour).concat(bubblePop)
+        const field = submitField.concat(lastFour).concat(bubblePop)
         axios.post('/api/bracket/create', {
             field,
             lastFour,
@@ -183,21 +183,13 @@ class Build extends Component {
 
     render() {
         return (
-            <div>
-                <SubmitBracket find68={this.find68} create={this.createBracket} field={this.state.field} />
-                {/*
-                    !this.state.submitted
-                        ?
-                        <RaisedButton label="Submit" onClick={this.find68.bind(this)} className="build-submit" />
-                        :
-                        (
-                            <div>
-                                <p>Are you sure?</p>
-                                <NavLink to="/new-bracket"><RaisedButton label="Yes" onClick={this.createBracket.bind(this)} /></NavLink>
-                            </div>
-                        )
-
-                    */}
+            <div id="build-page">
+                <div id="build-buttons">
+                    <div id="submit-bracket">
+                    <SubmitBracket find68={this.find68} create={this.createBracket} field={this.state.field} id={this.props.id} />
+                    </div>
+                    <BuildHelp />
+                </div>
                 <div id='field'>
                     {
                         this.populateTeamCards.call(this)
@@ -213,19 +205,9 @@ const mapState = (state) => {
         espnRPI: state.espnRPI,
         espnBPI: state.espnBPI,
         confChamps: state.confChamps,
-        userId: !!state.user.id
+        userId: !!state.user.id,
+        id: state.user.id
     }
 }
 
-const mapDispatch = (dispatch) => {
-    return {
-        // loadRPI() {
-        //     dispatch(fetchRPI())
-        // },
-        // loadBPI() {
-        //     dispatch(fetchBPI())
-        // }
-    }
-}
-
-export default withRouter(connect(mapState, mapDispatch)(Build));
+export default withRouter(connect(mapState)(Build));

@@ -5,14 +5,14 @@ import store from './store'
 import Routes from './routes'
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { blueGrey500, indigo700, grey300 } from 'material-ui/styles/colors';
+import { grey600, grey200, grey300 } from 'material-ui/styles/colors';
 
 const muiTheme = getMuiTheme({
   palette: {
-    primary1Color: blueGrey500,
-        primary2Color: indigo700,
+    primary1Color: grey600,
+        primary2Color: grey200,
         accent1Color: grey300,
-        pickerHeaderColor: blueGrey500,
+        pickerHeaderColor: grey600,
         alternateTextColor: grey300,
   }
 });

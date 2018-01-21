@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetchUserBrackets } from '../store/index';
 
 export default class SubmitBracket extends Component {
     constructor(props) {
@@ -38,12 +40,12 @@ export default class SubmitBracket extends Component {
                 onClick={this.handleCancel}
             />,
             <NavLink to="/new-bracket">
-            <FlatButton
-                label="Submit"
-                primary={true}
-                keyboardFocused={true}
-                onClick={this.handleSubmit}
-            /></NavLink>,
+                <FlatButton
+                    label="Submit"
+                    primary={true}
+                    keyboardFocused={true}
+                    onClick={this.handleSubmit}
+                /></NavLink>,
         ];
 
         return (

@@ -34,6 +34,7 @@ form div {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  margin-top: 30px;
 }
 
 .team-card {
@@ -41,13 +42,15 @@ form div {
   width: 200px;
   padding-left: 10px;
   padding-bottom: 10px;
-  background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 3px 3px 3px;
+  background-color: rgba(117, 117, 117, 0.8);
+  box-shadow: 3px 3px 3px black;
   border-radius: 3px;
+  color: white;
+  text-shadow: 2px 2px black;
 }
 
 .team-card-name {
-  color: #a7a7a7;
+  color: rgb(224, 224, 224);
   text-shadow: 2px 2px 2px black;
 }
 
@@ -67,6 +70,7 @@ form div {
 
 .user-bracket {
   display: flex;
+  justify-content: space-around;
   margin: 20px;
 }
 
@@ -98,6 +102,12 @@ form div {
   padding: 10px;
   box-shadow: 3px 3px 3px;
   margin: 20px 20px 65px 20px;
+  display: flex;
+}
+
+.user-page-selector-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .user-bracket-field {
@@ -153,4 +163,51 @@ form div {
   font-size: 16px;
   border-radius: 5px;
   background-color: #e0e0e0;
+}
+
+#build-buttons {
+  position: fixed;
+  width: 85px;
+  top: 85%;
+  left: 90%;
+}
+
+#submit-bracket {
+  margin-bottom: 10px;
+}
+
+#build-page {
+  display: flex;
+}
+
+#progress {
+  height: 300px;
+  width: 300px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 150px;
+  position: absolute;
+  left: 50%;
+  margin-left: -150px;
+  top: 200px;
+}
+
+#bracket-load {
+  position: absolute;
+  text-align: center;
+  width: 120px;
+  height: 120px;
+  top: 50%;
+  left: 50%;
+  margin-left: -60px;
+  margin-top: -83px;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+
+#build-button {
+  width: 189px;
+    position: absolute;
+    left: 50%;
+    margin-left: -90px;
+    top: 50%;
 }

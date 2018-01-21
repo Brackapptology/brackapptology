@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import store from '../store';
 import createSeedlines from '../../utils/createSeedlines';
+import formatDate from '../../utils/formatDate';
 import Divider from 'material-ui/Divider';
 
 export default function UserBracket(props) {
@@ -14,6 +15,7 @@ export default function UserBracket(props) {
         return (
             <div className="user-bracket">
                 <div className="user-bracket-field">
+                <h3>{formatDate(props.date)}</h3>
                     {
                         seedLines.map((line, idx) => {
                             return (

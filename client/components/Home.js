@@ -4,25 +4,43 @@ import { connect } from 'react-redux';
 import { fetchRPI, fetchBPI, fetchChamps } from '../store/index';
 import RaisedButton from 'material-ui/RaisedButton';
 import Progress from './Progress';
-import CredentialsDialog from './CredentialsDialog';
+import Build from './Build';
 
 class Home extends Component {
-    
+
+    constructor() {
+        super();
+        this.state = {
+            hideButton: false
+        }
+    }
+
     componentDidMount() {
         this.props.loadInitialData();
     }
-    
+
+    hideButton() {
+        this.setState({ hideButton: true })
+    }
+
     render() {
-       if (Object.keys(this.props.espnRPI).length > 340 && Object.keys(this.props.espnBPI).length > 340) {
-            return (
-                <div>
-                <NavLink to='/build'><RaisedButton label="Build your bracket" /></NavLink>
-                <CredentialsDialog />
-                </div>
-            )
+        if (Object.keys(this.props.espnRPI).length > 340 && Object.keys(this.props.espnBPI).length > 340) {
+            if (!this.state.hideButton) {
+                return (
+                    <div id="build-button">
+                        <RaisedButton label="Build your bracket" onClick={this.hideButton.bind(this)} />
+                    </div>
+                )
+            } else {
+                return (
+                    <Build />
+                )
+            }
         } else {
             return (
-                <Progress />
+                <div id="progress">
+                    <Progress />
+                </div>
             )
         }
     }
