@@ -37,6 +37,10 @@ form div {
   margin-top: 30px;
 }
 
+.direct-user-bracket-name {
+  color: black;
+}
+
 .team-card {
   margin: 10px;
   width: 200px;
@@ -73,6 +77,20 @@ form div {
   display: flex;
   justify-content: space-around;
   margin: 20px;
+  margin-left: 32px;
+  position: absolute;
+  top: -20px;
+}
+
+.user-bracket-save {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+  margin-left: 32px;
+  position: absolute;
+  margin-left: -295px;
+  left: 50%;
+  top: 25%
 }
 
 .user-bracket-last-four {
@@ -98,7 +116,7 @@ form div {
 
 .user-page-header-buttons {
   position: absolute;
-  left: 410px;
+  left: 73%;
   top: 31px;
 }
 
@@ -119,11 +137,10 @@ form div {
   box-shadow: 3px 3px 3px;
   margin: 20px 20px 65px 20px;
   display: flex;
+  position: absolute;
+  margin-left: -431px;
+  left: 50%;
 }
-
-/* .user-page-bracket {
-  display: fl
-} */
 
 .user-page-selector-container {
   display: flex;
@@ -142,7 +159,7 @@ form div {
   background-color: rgba(255,255,255,0.8);
   padding: 10px;
   left: 82%;
-  height: 586px;
+  height: 670px;
   box-shadow: 3px 3px 3px;
 }
 
@@ -154,15 +171,16 @@ form div {
 }
 
 .credential-form {
-  background-color: rgba(255,255,255,0.8);
-  width: 320px;
-  position: absolute;
-  left: 50%;
-  margin-left: -160px;
-  top: 25%;
-  box-shadow: 3px 3px 3px black;
-  padding: 10px;
-  border-radius: 3px;
+  background-color: rgba(255,255,255,1);
+    width: 320px;
+    position: absolute;
+    left: 50%;
+    margin-left: -160px;
+    top: 37%;
+    box-shadow: 3px 3px 3px black;
+    padding: 10px;
+    border-radius: 3px;
+    z-index: 3;
 }
 
 #google-login-button {

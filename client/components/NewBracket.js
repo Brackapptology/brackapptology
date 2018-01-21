@@ -17,7 +17,7 @@ class NewBracket extends Component {
 
             const seedLines = createSeedlines(this.props.newBracket.field, this.props.newBracket.lastFour);
             return (
-                <div className="user-bracket">
+                <div className="user-bracket-save">
                     <div className="user-bracket-field">
                     {
                         this.props.isLoggedIn
@@ -60,7 +60,7 @@ class NewBracket extends Component {
                         <div className="user-bracket-bubble-burst">
                             <h3>Bubbles burst</h3>
                             {
-                                this.props.newBracket.field.slice(72).map(team => {
+                                this.props.newBracket.field.slice(64).map(team => {
                                     return (
                                         <p key={team}>{team}</p>
                                     )

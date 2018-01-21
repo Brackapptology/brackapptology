@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import createSeedlines from '../../utils/createSeedlines';
 import formatDate from '../../utils/formatDate';
@@ -16,15 +16,14 @@ class DirectUserBracket extends Component {
     render() {
 
         if (this.props.bracket.field && this.props.bracket.lastFour) {
-
         const bracket = this.props.bracket;
         const seedLines = createSeedlines(bracket.field, bracket.lastFour);
 
         return (
-            <div className="user-bracket">
+            <div className="user-bracket-save">
                 <div className="user-bracket-field">
                 <h3>{formatDate(bracket.date)}</h3>
-                <h5>By {this.props.user.name}</h5>
+                <NavLink to={`/users/${this.props.user.id}`}><h5 className="direct-user-bracket-name">By {this.props.user.name}</h5></NavLink>
                     {
                         seedLines.map((line, idx) => {
                             return (
@@ -59,7 +58,7 @@ class DirectUserBracket extends Component {
                     <div className="user-bracket-bubble-burst">
                         <h3>Bubbles burst</h3>
                         {
-                            bracket.field.slice(72).map(team => {
+                            bracket.field.slice(64).map(team => {
                                 return (
                                     <p key={team}>{team}</p>
                                 )

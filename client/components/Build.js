@@ -9,7 +9,7 @@ import SubmitBracket from './SubmitBracket';
 import BuildHelp from './BuildHelp'
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import { white } from 'material-ui/styles/colors';
+import { white, black } from 'material-ui/styles/colors';
 
 class Build extends Component {
 
@@ -113,6 +113,7 @@ class Build extends Component {
                     <div className="quick-rank">
                         <SelectField
                             floatingLabelText="Quick-Rank"
+                            floatingLabelStyle={{ textColor: black }}
                             style={{width: 120, textColor: white }}
                         >
                             {
