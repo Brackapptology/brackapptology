@@ -81,8 +81,8 @@ const mapState = (state) => {
     return {
         newBracket: state.currentUserBrackets[state.currentUserBrackets.length - 1],
         newLastFour: state.userLastFours[state.userLastFours.length - 1],
-        isLoggedIn: !!state.user.id,
-        user: state.user
+        isLoggedIn: !!state.activeUser.id,
+        user: state.activeUser
     }
 }
 

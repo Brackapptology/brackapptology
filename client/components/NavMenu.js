@@ -39,7 +39,7 @@ function NavMenu(props) {
 
 const mapState = (state) => {
     return {
-        id: state.user.id
+        id: state.activeUser.id
     }
 }
 

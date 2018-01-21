@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
-import { withRouter, NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import store from '../store';
 import createSeedlines from '../../utils/createSeedlines';
 import formatDate from '../../utils/formatDate';
-import {Divider, RaisedButton} from 'material-ui';
+import Divider from 'material-ui/Divider';
+import { fetchBracket, fetchInactiveUser } from '../store/index';
 
-export default function UserBracket(props) {
+class DirectUserBracket extends Component {
 
-    console.log(props)
+    componentDidMount() {
+        this.props.loadBracket(Number(this.props.match.params.userId), Number(this.props.match.params.bracketId))
+        this.props.loadUser(Number(this.props.match.params.userId))
+    }
 
-    if (props.field && props.lastFour) {
+    render() {
 
-        const seedLines = createSeedlines(props.field, props.lastFour);
+        if (this.props.bracket.field && this.props.bracket.lastFour) {
+
+        const bracket = this.props.bracket;
+        const seedLines = createSeedlines(bracket.field, bracket.lastFour);
+
         return (
             <div className="user-bracket">
                 <div className="user-bracket-field">
-                <h3>{formatDate(props.date)}</h3>
-                <NavLink to={props.url}><RaisedButton label="Share this bracket" /></NavLink>
+                <h3>{formatDate(bracket.date)}</h3>
+                <h5>By {this.props.user.name}</h5>
                     {
                         seedLines.map((line, idx) => {
                             return (
@@ -41,7 +48,7 @@ export default function UserBracket(props) {
                     <div className="user-bracket-last-four">
                         <h3>Last Four In</h3>
                         {
-                            props.lastFour.map(team => {
+                            bracket.lastFour.map(team => {
                                 return (
                                     <p key={team}>{team}</p>
                                 )
@@ -52,7 +59,7 @@ export default function UserBracket(props) {
                     <div className="user-bracket-bubble-burst">
                         <h3>Bubbles burst</h3>
                         {
-                            props.field.slice(72).map(team => {
+                            bracket.field.slice(72).map(team => {
                                 return (
                                     <p key={team}>{team}</p>
                                 )
@@ -61,9 +68,30 @@ export default function UserBracket(props) {
                     </div>
                 </div>
             </div>
-
         )
     } else {
-        return null;
+        return null
     }
 }
+
+}
+
+const mapState = (state) => {
+    return {
+        bracket: state.urlBracket,
+        user: state.inactiveUser
+    }
+}
+
+const mapDispatch = (dispatch) => {
+    return {
+        loadBracket(userId, bracketId) {
+            dispatch(fetchBracket(userId, bracketId))
+        }, 
+        loadUser(userId) {
+            dispatch(fetchInactiveUser(userId))
+        }
+    }
+}
+
+export default withRouter(connect(mapState, mapDispatch)(DirectUserBracket));

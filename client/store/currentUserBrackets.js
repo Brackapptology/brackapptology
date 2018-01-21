@@ -28,7 +28,6 @@ export function fetchUserBrackets(userId) {
     }
 }
 
-
 export default function currentUserBracketsReducer(state = [], action) {
     switch (action.type) {
         case GET_BRACKETS:

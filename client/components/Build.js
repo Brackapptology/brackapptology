@@ -205,8 +205,8 @@ const mapState = (state) => {
         espnRPI: state.espnRPI,
         espnBPI: state.espnBPI,
         confChamps: state.confChamps,
-        userId: !!state.user.id,
-        id: state.user.id
+        userId: !!state.activeUser.id,
+        id: state.activeUser.id
     }
 }
 

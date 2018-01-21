@@ -98,12 +98,17 @@ form div {
 .user-page-brackets {
   background-color: rgba(255,255,255,0.8);
   width: 279px;
+  height: 152px;
   margin: 20px;
   padding: 10px;
   box-shadow: 3px 3px 3px;
   margin: 20px 20px 65px 20px;
   display: flex;
 }
+
+/* .user-page-bracket {
+  display: fl
+} */
 
 .user-page-selector-container {
   display: flex;
