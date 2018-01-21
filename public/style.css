@@ -96,6 +96,20 @@ form div {
   left: 100px;
 }
 
+.user-page-header-buttons {
+  position: absolute;
+  left: 410px;
+  top: 31px;
+}
+
+.user-page-display-edit {
+  margin-right: 10px;
+}
+
+.user-page-header-buttons RaisedButton {
+  margin: 10px;
+}
+
 .user-page-brackets {
   background-color: rgba(255,255,255,0.8);
   width: 279px;

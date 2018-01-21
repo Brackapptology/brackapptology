@@ -26,12 +26,15 @@ export function fetchUsers() {
     }
 }
 
-export function editUser(id, name, isAdmin) {
+export function editUser(id, name, isAdmin, email, password, photo) {
+    let updateObj = {}
+    if (!isAdmin) {
+        updateObj = {name, email, password, photo}
+    } else {
+        updateObj = {name, isAdmin}
+    }
     return function thunk(dispatch) {
-        return axios.put(`/api/users/${id}/edit`, {
-            name,
-            isAdmin
-        })
+        return axios.put(`/api/users/${id}/edit`, updateObj)
             .then(res => res.data)
             .then(user => dispatch(updateUser(user)))
             .catch(console.error)

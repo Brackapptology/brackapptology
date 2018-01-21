@@ -72,7 +72,7 @@ class Admin extends Component {
             {
                 this.props.displayForm
                     ?
-                    <EditUser id={this.state.id} name={this.state.name} isAdmin={this.state.isAdmin} />
+                    <EditUser id={this.state.id} name={this.state.name} isAdmin={this.state.isAdmin} adminEdit={true} />
                     :
                     null
             }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchUserBrackets, me, fetchUserPageData, fetchUserBracket } from '../store/index';
+import store, { fetchUserBrackets, me, fetchUserPageData, fetchUserBracket, displayForm } from '../store/index';
 import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import UserBracket from './UserBracket';
@@ -7,8 +7,10 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import ListItem from 'material-ui/List/ListItem';
 import Avatar from 'material-ui/Avatar';
+import RaisedButton from 'material-ui/RaisedButton';
 import history from '../history';
 import formatDate from '../../utils/formatDate';
+import EditUser from './EditUser';
 
 const styles = {
     customWidth: {
@@ -37,12 +39,16 @@ class UserPage extends Component {
     handleChange = (event, index, value) => {
         const bracktId = this.props.brackets.length;
         const url = `/users/${Number(this.props.match.params.userId)}/brackets/${bracktId}`
-        this.setState({ 
-            value, 
+        this.setState({
+            value,
             bracket: this.props.brackets[bracktId - 1],
             url
         })
     };
+
+    displayEdit() {
+        store.dispatch(displayForm(true))
+    }
 
     render() {
         let reversedBrackets = [];
@@ -68,7 +74,24 @@ class UserPage extends Component {
                                 }
                             >
                                 <h1 className="user-page-header-name">{this.props.user && this.props.user.name}</h1>
+                                <div className="user-page-header-buttons">
+                                    <RaisedButton className="user-page-display-edit" label="Edit" onClick={this.displayEdit.bind(this)} />
+                                    {
+                                        this.props.user.isAdmin
+                                            ?
+                                            <NavLink to="/admin"><RaisedButton label="Admin Panel" /></NavLink>
+                                            :
+                                            null
+                                    }
+                                </div>
                             </ListItem>
+                            {
+                                this.props.displayForm
+                                    ?
+                                    <EditUser id={this.props.user.id} name={this.props.user.name} email={this.props.user.email} password={this.props.user.password} photo={this.props.user.photoUrl} isAdmin={this.props.user.isAdmin} adminEdit={false} />
+                                    :
+                                    null
+                            }
                             <div className="user-page-brackets">
                                 <div className="user-page-selector-container">
                                     <h3>My brackets</h3>
@@ -105,10 +128,10 @@ class UserPage extends Component {
                                         this.state.bracket
                                             ?
                                             <UserBracket
-                                            field={this.state.bracket.field}
-                                            lastFour={this.state.bracket.lastFour}
-                                            date={this.state.bracket.date}
-                                            url={this.state.url}
+                                                field={this.state.bracket.field}
+                                                lastFour={this.state.bracket.lastFour}
+                                                date={this.state.bracket.date}
+                                                url={this.state.url}
                                             />
                                             :
                                             null
@@ -165,10 +188,10 @@ class UserPage extends Component {
                                         this.state.bracket
                                             ?
                                             <UserBracket
-                                            field={this.state.bracket.field}
-                                            lastFour={this.state.bracket.lastFour}
-                                            date={this.state.bracket.date}
-                                            url={this.state.url}
+                                                field={this.state.bracket.field}
+                                                lastFour={this.state.bracket.lastFour}
+                                                date={this.state.bracket.date}
+                                                url={this.state.url}
                                             />
                                             :
                                             null
@@ -189,7 +212,8 @@ const mapState = (state) => {
         brackets: state.currentUserBrackets,
         user: state.activeUser,
         userPage: state.userPageInfo,
-        userPageBracket: state.userPageBracket
+        userPageBracket: state.userPageBracket,
+        displayForm: state.displayEditUser
     }
 }
 
