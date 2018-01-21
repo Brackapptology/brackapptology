@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import store from '../store';
 import createSeedlines from '../../utils/createSeedlines';
@@ -22,7 +22,10 @@ class NewBracket extends Component {
                     {
                         this.props.isLoggedIn
                             ?
+                            <div>
                             <h3>{this.props.user.name}'s new bracketology</h3>
+                            <NavLink to={`/users/${this.props.user.id}`}><h5 className="direct-user-bracket-name">Visit your page</h5></NavLink>
+                            </div>
                             :
                             <h3>Your new bracketology</h3>
                     }

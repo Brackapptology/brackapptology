@@ -10,6 +10,7 @@ import BuildHelp from './BuildHelp'
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import { white, black } from 'material-ui/styles/colors';
+import RaisedButton from 'material-ui/RaisedButton/RaisedButton';
 
 class Build extends Component {
 
@@ -21,7 +22,8 @@ class Build extends Component {
             submitField: [],
             lastFour: [],
             bubblePop: [],
-            submitted: false
+            submitted: false,
+            blind: false
         }
     }
 
@@ -80,13 +82,21 @@ class Build extends Component {
             const team = Object.keys(teamObj)[0];
             return (
                 <div key={idx} className='team-card'>
-                    <h3 className="team-card-name">{idx + 1 + '. ' + team}</h3>
                     {
-                        teamObj[team].isChamp
+                        !this.state.blind
                             ?
-                            <h5 className="team-card-small-header">{teamObj[team].conf} <small>Proj. Champ</small></h5>
+                            <div>
+                            <h3 className="team-card-name">{idx + 1 + '. ' + team}</h3>
+                            {
+                                teamObj[team].isChamp
+                                    ?
+                                    <h5 className="team-card-small-header">{teamObj[team].conf} <small>Proj. Champ</small></h5>
+                                    :
+                                    <h5 className="team-card-small-header">{teamObj[team].conf}</h5>
+                            }
+                            </div>
                             :
-                            <h5 className="team-card-small-header">{teamObj[team].conf}</h5>
+                            <h3>No. {idx + 1}</h3>
                     }
                     <p>Record: {teamObj[team].record}</p>
                     <p>BPI: {teamObj[team].bpi}</p>
@@ -203,9 +213,22 @@ class Build extends Component {
             .catch(console.error)
     }
 
+    toggleBlind() {
+        this.setState({ blind: !this.state.blind })
+    }
+
     render() {
         return (
             <div id="build-page">
+                <div id="blind-button">
+                {
+                    this.state.blind
+                        ?
+                        <RaisedButton label="Leave Blind Mode" onClick={this.toggleBlind.bind(this)} />
+                        :
+                        <RaisedButton label="Go Blind" onClick={this.toggleBlind.bind(this)} />
+                }
+                </div>
                 <div id="build-buttons">
                     <div id="submit-bracket">
                         <SubmitBracket find68={this.find68} create={this.createBracket} field={this.state.field} id={this.props.id} />

@@ -34,7 +34,7 @@ form div {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 100px;
 }
 
 .direct-user-bracket-name {
@@ -210,12 +210,17 @@ form div {
   left: 90%;
 }
 
-#submit-bracket {
-  margin-bottom: 10px;
+#blind-button {
+  position: absolute;
+    top: 103px;
+    left: 50%;
+    width: 200px;
+    margin-left: -100px;
+    text-align: center;
 }
 
-#build-page {
-  display: flex;
+#submit-bracket {
+  margin-bottom: 10px;
 }
 
 #progress {
