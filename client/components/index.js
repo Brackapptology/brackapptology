@@ -13,3 +13,4 @@ export {default as NewBracket} from './NewBracket';
 export {default as UserPage} from './UserPage';
 export {default as UserBracket} from './UserBracket';
 export {default as DirectUserBracket} from './DirectUserBracket';
+export {default as Admin} from './Admin';

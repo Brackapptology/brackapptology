@@ -12,6 +12,8 @@ import userPageInfo from './userPage';
 import userPageBracket from './userPageBracket';
 import urlBracket from './urlBracket';
 import inactiveUser from './inactiveUser';
+import allUsers from './allUsers';
+import displayEditUser from './displayEditUser';
 
 const reducer = combineReducers({
   activeUser,
@@ -23,7 +25,9 @@ const reducer = combineReducers({
   userPageInfo,
   userPageBracket,
   urlBracket,
-  inactiveUser
+  inactiveUser,
+  allUsers,
+  displayEditUser
 })
 const middleware = composeWithDevTools(applyMiddleware(
   thunkMiddleware,
@@ -42,3 +46,5 @@ export * from './userPage';
 export * from './userPageBracket';
 export * from './urlBracket';
 export * from './inactiveUser';
+export * from './allUsers';
+export * from './displayEditUser';

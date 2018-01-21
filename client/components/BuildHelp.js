@@ -37,8 +37,9 @@ export default class BuildHelp extends Component {
             onRequestClose={this.handleClose}
           >
             <ol>
-                <li>Compare teams by resumes on team cards</li>
-                <li>Use arrows at bottom of card to move teams up and down</li>
+                <li>Compare teams by resumes on team cards.</li>
+                <li>Use arrows at bottom of card to move teams up and down.</li>
+                <li>Want to move a team more than just a few spots? Use the quick rank selector to save time.</li>
                 <li>Don't forget about the projected champions, who get automatic bids! Most of them are probably near the bottom</li>
                 <li>Hit submit once you've completed your bracketology!</li>
             </ol>
