@@ -175,8 +175,8 @@ class Build extends Component {
             bubblePop
         })
             .then(bracket => {
-                store.dispatch(addBracket(bracket.data.field));
-                store.dispatch(addLastFour(bracket.data.lastFour));
+                store.dispatch(addBracket(bracket.data));
+                // store.dispatch(addLastFour(bracket.data.lastFour));
             })
             .catch(console.error)
     }

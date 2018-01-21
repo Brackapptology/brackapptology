@@ -13,9 +13,9 @@ class NewBracket extends Component {
 
     render() {
 
-        if (this.props.newBracket && this.props.newLastFour) {
+        if (this.props.newBracket && this.props.newBracket) {
 
-            const seedLines = createSeedlines(this.props.newBracket, this.props.newLastFour);
+            const seedLines = createSeedlines(this.props.newBracket.field, this.props.newBracket.lastFour);
             return (
                 <div className="user-bracket">
                     <div className="user-bracket-field">
@@ -49,7 +49,7 @@ class NewBracket extends Component {
                         <div className="user-bracket-last-four">
                             <h3>Last Four In</h3>
                             {
-                                this.props.newLastFour.map(team => {
+                                this.props.newBracket.lastFour.map(team => {
                                     return (
                                         <p key={team}>{team}</p>
                                     )
@@ -60,7 +60,7 @@ class NewBracket extends Component {
                         <div className="user-bracket-bubble-burst">
                             <h3>Bubbles burst</h3>
                             {
-                                this.props.newBracket.slice(72).map(team => {
+                                this.props.newBracket.field.slice(72).map(team => {
                                     return (
                                         <p key={team}>{team}</p>
                                     )
@@ -80,7 +80,7 @@ class NewBracket extends Component {
 const mapState = (state) => {
     return {
         newBracket: state.currentUserBrackets[state.currentUserBrackets.length - 1],
-        newLastFour: state.userLastFours[state.userLastFours.length - 1],
+        // newLastFour: state.userLastFours[state.userLastFours.length - 1],
         isLoggedIn: !!state.activeUser.id,
         user: state.activeUser
     }

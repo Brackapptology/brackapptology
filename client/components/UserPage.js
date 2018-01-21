@@ -83,6 +83,7 @@ class UserPage extends Component {
                                                 >
                                                     {
                                                         reversedBrackets.map((entry, idx) => {
+                                                            console.log(entry)
                                                             let date = formatDate(entry.date);
                                                             return (
                                                                 <MenuItem
