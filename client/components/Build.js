@@ -3,11 +3,13 @@ import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import store, { addBracket, addLastFour } from '../store';
-import { Paper, RaisedButton } from 'material-ui';
 import ArrowUp from 'material-ui/svg-icons/navigation/arrow-upward';
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-downward';
 import SubmitBracket from './SubmitBracket';
 import BuildHelp from './BuildHelp'
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+import { white } from 'material-ui/styles/colors';
 
 class Build extends Component {
 
@@ -77,8 +79,7 @@ class Build extends Component {
         return field.map((teamObj, idx) => {
             const team = Object.keys(teamObj)[0];
             return (
-                // <Paper key={team} style={style} zDepth={5} className="team-card-paper">
-                <div className='team-card'>
+                <div key={idx} className='team-card'>
                     <h3 className="team-card-name">{idx + 1 + '. ' + team}</h3>
                     {
                         teamObj[team].isChamp
@@ -109,10 +110,36 @@ class Build extends Component {
                             :
                             null
                     }
+                    <div className="quick-rank">
+                        <SelectField
+                            floatingLabelText="Quick-Rank"
+                            style={{width: 120, textColor: white }}
+                        >
+                            {
+                                this.state.field.map((rank, selectIdx) => {
+                                    return <MenuItem key={selectIdx} value={selectIdx} primaryText={selectIdx + 1} onClick={this.quickRank.bind(this, teamObj, selectIdx)} />
+                                })
+                            }
+
+                        </SelectField>
+                    </div>
                 </div>
-                // </Paper>
             )
         })
+    }
+
+    quickRank(teamObj, selectIdx) {
+        let teams = this.state.field;
+        let oldIdx = teams.indexOf(teamObj);
+        let newIdx = selectIdx;
+        if (oldIdx > newIdx) {
+            teams.splice(newIdx, 0, teamObj)
+            teams.splice(oldIdx + 1, 1)
+        } else if (newIdx > oldIdx) {
+            teams.splice(newIdx + 1, 0, teamObj)
+            teams.splice(oldIdx, 1)
+        }
+        this.setState({ field: teams });
     }
 
     moveTeam(idx, bool) {
@@ -136,7 +163,6 @@ class Build extends Component {
     }
 
     find68(field) {
-        // const oldField = this.state.field;
         const oldField = field;
         let newField = [];
         let atLarge = 0;
@@ -161,13 +187,9 @@ class Build extends Component {
             }
         })
         return { submitField: newField, lastFour, bubblePop, submitted: true }
-        // this.setState({ submitField: newField, lastFour, bubblePop, submitted: true });
     }
 
     createBracket(submitField, lastFour, bubblePop) {
-        // const lastFour = this.state.lastFour;
-        // const bubblePop = this.state.bubblePop;
-        // const field = this.state.submitField.concat(this.state.lastFour).concat(this.state.bubblePop);
         const field = submitField.concat(lastFour).concat(bubblePop)
         axios.post('/api/bracket/create', {
             field,
@@ -176,7 +198,6 @@ class Build extends Component {
         })
             .then(bracket => {
                 store.dispatch(addBracket(bracket.data));
-                // store.dispatch(addLastFour(bracket.data.lastFour));
             })
             .catch(console.error)
     }
@@ -186,7 +207,7 @@ class Build extends Component {
             <div id="build-page">
                 <div id="build-buttons">
                     <div id="submit-bracket">
-                    <SubmitBracket find68={this.find68} create={this.createBracket} field={this.state.field} id={this.props.id} />
+                        <SubmitBracket find68={this.find68} create={this.createBracket} field={this.state.field} id={this.props.id} />
                     </div>
                     <BuildHelp />
                 </div>
