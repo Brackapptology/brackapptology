@@ -1,6 +1,4 @@
 const router = require('express').Router();
-const rp = require('request-promise');
-const cheerio = require('cheerio');
 const { espnBPI, espnRPI, confChamps } = require('../../utils/espn-scraper');
 
 router.get(`/rpi/1`, (req, res, next) => {

@@ -5,7 +5,7 @@ import NavMenu from './NavMenu';
 const NavBar = () => {
     return (
         <AppBar
-        title="Brackapptology"
+        title="BRACKAPPTOLOGY"
         iconElementLeft={<NavMenu />}
         />
     )
