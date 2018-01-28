@@ -18,7 +18,7 @@ const espnRPI = (uri, req, res, next) => {
                 }
             })
             let currentRank = 0;
-            const rankings = {};
+            const rankings = [];
             for (let i = 0; i < dataArr.length; i += 17) {
                 let team = dataArr[i + 1];
                 let rank = dataArr[i];
@@ -35,13 +35,14 @@ const espnRPI = (uri, req, res, next) => {
                     let t50 = dataArr[i + 10];
                     let t100 = dataArr[i + 11];
                     if (team !== 'TEAM') {
-                        rankings[team] = {
+                        rankings.push({
+                            team,
                             rpi: rank,
                             record,
                             t25,
                             t50,
                             t100
-                        }
+                        })
                     }
                 }
             }
@@ -100,7 +101,7 @@ const espnBPI = (uri, req, res, next) => {
                     dataArr.push($(this).text())
                 }
             })
-            const rankings = {};
+            const rankings = [];
             for (let i = 0; i < dataArr.length; i += 8) {
                 let team = dataArr[i + 1];
                 team = shaveBPI(team);
@@ -109,12 +110,13 @@ const espnBPI = (uri, req, res, next) => {
                 let sos = dataArr[i + 5];
                 let sor = dataArr[i + 6];
 
-                rankings[team] = {
+                rankings.push({
+                    team,
                     bpi: rank,
                     conf,
                     sos,
                     sor
-                }
+                })
             }
             res.json(rankings)
         })

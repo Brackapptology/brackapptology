@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchRPI, fetchBPI, fetchChamps } from '../store/index';
+import { fetchRPI, fetchBPI, fetchChamps, fetchKPI } from '../store/index';
 import RaisedButton from 'material-ui/RaisedButton';
 import Progress from './Progress';
 import Build from './Build';
@@ -24,7 +24,7 @@ class Home extends Component {
     }
 
     render() {
-        if (Object.keys(this.props.espnRPI).length > 340 && Object.keys(this.props.espnBPI).length > 340) {
+        if (this.props.espnRPI.length > 340 && this.props.espnBPI.length > 340 && this.props.kpi.length > 340) {
             if (!this.state.hideButton) {
                 return (
                     <div id="build-button">
@@ -50,7 +50,8 @@ const mapState = (state) => {
     return {
         espnRPI: state.espnRPI,
         espnBPI: state.espnBPI,
-        confChamps: state.confChamps
+        confChamps: state.confChamps,
+        kpi: state.kpi
     }
 }
 
@@ -60,6 +61,7 @@ const mapDispatch = (dispatch) => {
             dispatch(fetchRPI());
             dispatch(fetchBPI());
             dispatch(fetchChamps());
+            dispatch(fetchKPI());
         }
     }
 }

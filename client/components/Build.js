@@ -23,7 +23,8 @@ class Build extends Component {
             lastFour: [],
             bubblePop: [],
             submitted: false,
-            blind: false
+            blind: false,
+            displayAdvanced: false
         }
     }
 
@@ -34,28 +35,42 @@ class Build extends Component {
     combineRPIandBPI() {
         const bpi = this.props.espnBPI;
         const rpi = this.props.espnRPI;
+        const kpi = this.props.kpi;
         const confChamps = this.props.confChamps;
 
         for (let conf in confChamps) {
-            for (let bpiTeam in bpi) {
-                if (confChamps[conf] === bpiTeam) {
-                    bpi[bpiTeam].isChamp = true;
+            for (let i = 0; i < bpi.length; i++) {
+                let teamObj = bpi[i];
+                if (confChamps[conf] === teamObj.team) {
+                    teamObj.isChamp = true;
                 }
             }
         }
 
-        for (let bpiTeam in bpi) {
-            for (let rpiTeam in rpi) {
-                if (bpiTeam === rpiTeam && !rpi[rpiTeam].bpi) {
-                    rpi[rpiTeam] = Object.assign(rpi[rpiTeam], bpi[bpiTeam])
+        for (let j = 0; j < bpi.length; j++) {
+            let bpiObj = bpi[j];
+            for (let i = 0; i < rpi.length; i++) {
+                let rpiObj = rpi[i];
+                if (bpiObj.team === rpiObj.team && !rpiObj.bpi) {
+                    rpiObj = Object.assign(rpiObj, bpiObj)
+                }
+            }
+        }
+
+        for (let j = 0; j < kpi.length; j++) {
+            let kpiObj = kpi[j];
+            for (let i = 0; i < rpi.length; i++) {
+                let rpiObj = rpi[i];
+                if (kpiObj.team === rpiObj.team && !rpiObj.kpi) {
+                    rpiObj = Object.assign(rpiObj, kpiObj)
                 }
             }
         }
 
 
-        const teams = Object.keys(rpi).map(team => {
-            if (rpi[team].rpi < 86 || rpi[team].isChamp) {
-                return { [team]: rpi[team] }
+        const teams = rpi.map(teamObj => {
+            if (teamObj.rpi < 86 || teamObj.isChamp) {
+                return teamObj
             }
         })
 
@@ -67,45 +82,67 @@ class Build extends Component {
 
     }
 
+    toggleMetricView() {
+        this.setState({displayAdvanced: !this.state.displayAdvanced})
+    }
+
     populateTeamCards() {
 
         const style = {
-            height: 440,
-            width: 220,
-            margin: 20,
-            display: 'inline-block',
+            width: 100,
+            height: 50
         };
 
         const field = this.state.field;
 
+        let metrics = '';
+
+        this.state.displayAdvanced ? metrics = 'Traditional Stats' : metrics = 'Advanced Metrics'
+
         return field.map((teamObj, idx) => {
-            const team = Object.keys(teamObj)[0];
             return (
                 <div key={idx} className='team-card'>
                     {
                         !this.state.blind
                             ?
                             <div>
-                            <h3 className="team-card-name">{idx + 1 + '. ' + team}</h3>
+                            <h3 className="team-card-name">{idx + 1 + '. ' + teamObj.team}</h3>
                             {
-                                teamObj[team].isChamp
+                                teamObj.isChamp
                                     ?
-                                    <h5 className="team-card-small-header">{teamObj[team].conf} <small>Proj. Champ</small></h5>
+                                    <h5 className="team-card-small-header">{teamObj.conf} <small>Proj. Champ</small></h5>
                                     :
-                                    <h5 className="team-card-small-header">{teamObj[team].conf}</h5>
+                                    <h5 className="team-card-small-header">{teamObj.conf}</h5>
                             }
                             </div>
                             :
                             <h3>No. {idx + 1}</h3>
                     }
-                    <p>Record: {teamObj[team].record}</p>
-                    <p>BPI: {teamObj[team].bpi}</p>
-                    <p>SOS: {teamObj[team].sos}</p>
-                    <p>SOR: {teamObj[team].sor}</p>
-                    <p>RPI: {teamObj[team].rpi}</p>
-                    <p>vs. RPI 1-25: {teamObj[team].t25}</p>
-                    <p>vs. RPI 26-50: {teamObj[team].t50}</p>
-                    <p>vs. RPI 51-100: {teamObj[team].t100}</p>
+                    {
+                        this.state.displayAdvanced
+                            ?
+                            <div>
+                                <RaisedButton label={`${metrics}`} onClick={this.toggleMetricView.bind(this)} />
+                                <p>BPI: {teamObj.bpi}</p>
+                                <p>BPI SOS: {teamObj.sos}</p>
+                                <p>BPI SOR: {teamObj.sor}</p>
+                                <p>KPI: {teamObj.kpi}</p>
+                                <p>KPI SOS: {teamObj.kpiSOS}</p>
+                                <p>vs. KPI Top 50: {teamObj.top50}</p>
+                            </div>
+                            :
+                            <div>
+                                <RaisedButton label={`${metrics}`} onClick={this.toggleMetricView.bind(this)} />
+                                <p>Record: {teamObj.record}</p>
+                                <p>Home: {teamObj.home}</p>
+                                <p>Away/Neutral: {teamObj.awayNeutral}</p>
+                                <p>RPI: {teamObj.rpi}</p>
+                                <p>vs. RPI 1-25: {teamObj.t25}</p>
+                                <p>vs. RPI 26-50: {teamObj.t50}</p>
+                                <p>vs. RPI 51-100: {teamObj.t100}</p>
+                            </div>
+
+                    }
                     {
                         idx > 0
                             ?
@@ -182,19 +219,18 @@ class Build extends Component {
         let bubblePop = [];
 
         oldField.forEach((teamObj, idx) => {
-            const team = Object.keys(teamObj)[0];
-            if (!teamObj[team].isChamp && atLarge < 36 && teamsInField < 68) {
+            if (!teamObj.isChamp && atLarge < 36 && teamsInField < 68) {
                 if (atLarge > 31) {
-                    lastFour.push(team);
+                    lastFour.push(teamObj.team);
                 }
                 atLarge++;
                 teamsInField++;
-                newField.push(team);
-            } else if (teamObj[team].isChamp && teamsInField < 68) {
+                newField.push(teamObj.team);
+            } else if (teamObj.isChamp && teamsInField < 68) {
                 teamsInField++;
-                newField.push(team);
-            } else if (!teamObj[team].isChamp && atLarge === 36 && bubblePop.length < 10) {
-                bubblePop.push(team);
+                newField.push(teamObj.team);
+            } else if (!teamObj.isChamp && atLarge === 36 && bubblePop.length < 10) {
+                bubblePop.push(teamObj.team);
             }
         })
         return { submitField: newField, lastFour, bubblePop, submitted: true }
@@ -249,6 +285,7 @@ const mapState = (state) => {
     return {
         espnRPI: state.espnRPI,
         espnBPI: state.espnBPI,
+        kpi: state.kpi,
         confChamps: state.confChamps,
         userId: !!state.activeUser.id,
         id: state.activeUser.id

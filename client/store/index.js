@@ -5,6 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import activeUser from './activeUser'
 import espnRPI from './espnRPI';
 import espnBPI from './espnBPI';
+import kpi from './kpi';
 import confChamps from './confChamps';
 import currentUserBrackets from './currentUserBrackets';
 import userLastFours from './userLastFours';
@@ -19,6 +20,7 @@ const reducer = combineReducers({
   activeUser,
   espnRPI,
   espnBPI,
+  kpi,
   confChamps,
   currentUserBrackets,
   userLastFours,
@@ -39,6 +41,7 @@ export default store;
 export * from './activeUser';
 export * from './espnRPI';
 export * from './espnBPI';
+export * from './kpi';
 export * from './confChamps';
 export * from './currentUserBrackets';
 export * from './userLastFours';
