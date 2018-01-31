@@ -5,6 +5,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchUserBrackets } from '../store/index';
+import { find68, createBracket } from '../../utils/build-utils';
+
 
 export default class SubmitBracket extends Component {
     constructor(props) {
@@ -19,7 +21,7 @@ export default class SubmitBracket extends Component {
 
     handleOpen = () => {
         this.setState({ open: true });
-        const newState = this.props.find68(this.props.field)
+        const newState = find68(this.props.field)
         this.setState(newState)
     };
 
@@ -29,7 +31,7 @@ export default class SubmitBracket extends Component {
 
     handleSubmit = () => {
         this.setState({ open: false });
-        this.props.create(this.state.submitField, this.state.lastFour, this.state.bubblePop);
+        createBracket(this.state.submitField, this.state.lastFour, this.state.bubblePop);
     }
 
     render() {

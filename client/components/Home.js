@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchRPI, fetchBPI, fetchChamps, fetchKPI } from '../store/index';
+import { fetchRPI, fetchBPI, fetchChamps, fetchKPI, fetchNolan } from '../store/index';
 import RaisedButton from 'material-ui/RaisedButton';
 import Progress from './Progress';
 import Build from './Build';
@@ -51,7 +51,8 @@ const mapState = (state) => {
         espnRPI: state.espnRPI,
         espnBPI: state.espnBPI,
         confChamps: state.confChamps,
-        kpi: state.kpi
+        kpi: state.kpi,
+        nolan: state.nolan
     }
 }
 
@@ -62,6 +63,7 @@ const mapDispatch = (dispatch) => {
             dispatch(fetchBPI());
             dispatch(fetchChamps());
             dispatch(fetchKPI());
+            dispatch(fetchNolan());
         }
     }
 }

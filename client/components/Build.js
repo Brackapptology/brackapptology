@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import axios from 'axios';
-import store, { addBracket, addLastFour } from '../store';
+import { addLastFour } from '../store';
 import ArrowUp from 'material-ui/svg-icons/navigation/arrow-upward';
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-downward';
 import SubmitBracket from './SubmitBracket';
@@ -34,42 +33,42 @@ class Build extends Component {
 
     combineRPIandBPI() {
         const bpi = this.props.espnBPI;
-        const rpi = this.props.espnRPI;
+        const nolan = this.props.nolan;
         const kpi = this.props.kpi;
         const confChamps = this.props.confChamps;
 
-        for (let conf in confChamps) {
-            for (let i = 0; i < bpi.length; i++) {
-                let teamObj = bpi[i];
-                if (confChamps[conf] === teamObj.team) {
-                    teamObj.isChamp = true;
-                }
-            }
-        }
+        // for (let conf in confChamps) {
+        //     for (let i = 0; i < bpi.length; i++) {
+        //         let teamObj = bpi[i];
+        //         if (confChamps[conf] === teamObj.team) {
+        //             teamObj.isChamp = true;
+        //         }
+        //     }
+        // }
 
         for (let j = 0; j < bpi.length; j++) {
             let bpiObj = bpi[j];
-            for (let i = 0; i < rpi.length; i++) {
-                let rpiObj = rpi[i];
-                if (bpiObj.team === rpiObj.team && !rpiObj.bpi) {
-                    rpiObj = Object.assign(rpiObj, bpiObj)
+            for (let i = 0; i < nolan.length; i++) {
+                let nolanObj = nolan[i];
+                if (bpiObj.team === nolanObj.team && !nolanObj.bpi) {
+                    nolanObj = Object.assign(nolanObj, bpiObj)
                 }
             }
         }
 
         for (let j = 0; j < kpi.length; j++) {
             let kpiObj = kpi[j];
-            for (let i = 0; i < rpi.length; i++) {
-                let rpiObj = rpi[i];
-                if (kpiObj.team === rpiObj.team && !rpiObj.kpi) {
-                    rpiObj = Object.assign(rpiObj, kpiObj)
+            for (let i = 0; i < nolan.length; i++) {
+                let nolanObj = nolan[i];
+                if (kpiObj.team === nolanObj.team && !nolanObj.kpi) {
+                    nolanObj = Object.assign(nolanObj, kpiObj)
                 }
             }
         }
 
 
-        const teams = rpi.map(teamObj => {
-            if (teamObj.rpi < 86 || teamObj.isChamp) {
+        const teams = nolan.map(teamObj => {
+            if ((teamObj.rpi && teamObj.rpi < 86) || teamObj.isChamp === true) {
                 return teamObj
             }
         })
@@ -78,7 +77,7 @@ class Build extends Component {
             return team !== undefined
         })
 
-        this.setState({ teams: rpi, field });
+        this.setState({ teams: nolan, field });
 
     }
 
@@ -88,12 +87,8 @@ class Build extends Component {
 
     populateTeamCards() {
 
-        const style = {
-            width: 100,
-            height: 50
-        };
-
         const field = this.state.field;
+        console.log(field)
 
         let metrics = '';
 
@@ -108,7 +103,7 @@ class Build extends Component {
                             <div>
                             <h3 className="team-card-name">{idx + 1 + '. ' + teamObj.team}</h3>
                             {
-                                teamObj.isChamp
+                                teamObj.isChamp === true
                                     ?
                                     <h5 className="team-card-small-header">{teamObj.conf} <small>Proj. Champ</small></h5>
                                     :
@@ -137,9 +132,10 @@ class Build extends Component {
                                 <p>Home: {teamObj.home}</p>
                                 <p>Away/Neutral: {teamObj.awayNeutral}</p>
                                 <p>RPI: {teamObj.rpi}</p>
-                                <p>vs. RPI 1-25: {teamObj.t25}</p>
-                                <p>vs. RPI 26-50: {teamObj.t50}</p>
-                                <p>vs. RPI 51-100: {teamObj.t100}</p>
+                                <p>vs. Group 1: {teamObj.group1}</p>
+                                <p>vs. Group 2: {teamObj.group2}</p>
+                                <p>vs. Group 3: {teamObj.group3}</p>
+                                <p>vs. Group 4: {teamObj.group4}</p>
                             </div>
 
                     }
@@ -210,44 +206,6 @@ class Build extends Component {
         this.setState({ field: teams })
     }
 
-    find68(field) {
-        const oldField = field;
-        let newField = [];
-        let atLarge = 0;
-        let teamsInField = 0;
-        let lastFour = [];
-        let bubblePop = [];
-
-        oldField.forEach((teamObj, idx) => {
-            if (!teamObj.isChamp && atLarge < 36 && teamsInField < 68) {
-                if (atLarge > 31) {
-                    lastFour.push(teamObj.team);
-                }
-                atLarge++;
-                teamsInField++;
-                newField.push(teamObj.team);
-            } else if (teamObj.isChamp && teamsInField < 68) {
-                teamsInField++;
-                newField.push(teamObj.team);
-            } else if (!teamObj.isChamp && atLarge === 36 && bubblePop.length < 10) {
-                bubblePop.push(teamObj.team);
-            }
-        })
-        return { submitField: newField, lastFour, bubblePop, submitted: true }
-    }
-
-    createBracket(submitField, lastFour, bubblePop) {
-        const field = submitField.concat(lastFour).concat(bubblePop)
-        axios.post('/api/bracket/create', {
-            field,
-            lastFour,
-            bubblePop
-        })
-            .then(bracket => {
-                store.dispatch(addBracket(bracket.data));
-            })
-            .catch(console.error)
-    }
 
     toggleBlind() {
         this.setState({ blind: !this.state.blind })
@@ -267,7 +225,7 @@ class Build extends Component {
                 </div>
                 <div id="build-buttons">
                     <div id="submit-bracket">
-                        <SubmitBracket find68={this.find68} create={this.createBracket} field={this.state.field} id={this.props.id} />
+                        <SubmitBracket field={this.state.field} id={this.props.id} />
                     </div>
                     <BuildHelp />
                 </div>
@@ -286,6 +244,7 @@ const mapState = (state) => {
         espnRPI: state.espnRPI,
         espnBPI: state.espnBPI,
         kpi: state.kpi,
+        nolan: state.nolan,
         confChamps: state.confChamps,
         userId: !!state.activeUser.id,
         id: state.activeUser.id

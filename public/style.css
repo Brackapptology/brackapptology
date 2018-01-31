@@ -44,7 +44,7 @@ form div {
 .team-card {
   margin: 10px;
   width: 200px;
-  height: 443px;
+  height: 480px;
   padding-left: 10px;
   padding-bottom: 10px;
   background-color: rgba(117, 117, 117, 0.8);
@@ -262,4 +262,8 @@ form div {
   top: -71px;
   left: 60px;
   text-shadow: none;
+}
+
+#bracket-share-buttons {
+  display: flex;
 }

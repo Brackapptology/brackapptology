@@ -6,6 +6,7 @@ import activeUser from './activeUser'
 import espnRPI from './espnRPI';
 import espnBPI from './espnBPI';
 import kpi from './kpi';
+import nolan from './nolan';
 import confChamps from './confChamps';
 import currentUserBrackets from './currentUserBrackets';
 import userLastFours from './userLastFours';
@@ -21,6 +22,7 @@ const reducer = combineReducers({
   espnRPI,
   espnBPI,
   kpi,
+  nolan,
   confChamps,
   currentUserBrackets,
   userLastFours,
@@ -51,3 +53,4 @@ export * from './urlBracket';
 export * from './inactiveUser';
 export * from './allUsers';
 export * from './displayEditUser';
+export * from './nolan';

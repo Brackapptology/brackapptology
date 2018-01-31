@@ -87,6 +87,8 @@ const convertKPItoRPI = (team) => {
             return 'Texas A&M-CC';
         case 'Cal State-Northridge':
             return 'CSU Northridge';
+        case 'Louisiana-Lafayette':
+            return 'Louisiana';
         default:
             return team;
     }
