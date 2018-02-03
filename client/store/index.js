@@ -3,11 +3,9 @@ import createLogger from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import activeUser from './activeUser'
-import espnRPI from './espnRPI';
 import espnBPI from './espnBPI';
 import kpi from './kpi';
 import nolan from './nolan';
-import confChamps from './confChamps';
 import currentUserBrackets from './currentUserBrackets';
 import userLastFours from './userLastFours';
 import userPageInfo from './userPage';
@@ -19,11 +17,9 @@ import displayEditUser from './displayEditUser';
 
 const reducer = combineReducers({
   activeUser,
-  espnRPI,
   espnBPI,
   kpi,
   nolan,
-  confChamps,
   currentUserBrackets,
   userLastFours,
   userPageInfo,
@@ -41,10 +37,8 @@ const store = createStore(reducer, middleware);
 
 export default store;
 export * from './activeUser';
-export * from './espnRPI';
 export * from './espnBPI';
 export * from './kpi';
-export * from './confChamps';
 export * from './currentUserBrackets';
 export * from './userLastFours';
 export * from './userPage';

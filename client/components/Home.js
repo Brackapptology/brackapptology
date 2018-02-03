@@ -24,7 +24,7 @@ class Home extends Component {
     }
 
     render() {
-        if (this.props.espnRPI.length > 340 && this.props.espnBPI.length > 340 && this.props.kpi.length > 340) {
+        if (this.props.espnBPI.length > 340 && this.props.kpi.length > 340 && this.props.nolan.length > 100) {
             if (!this.state.hideButton) {
                 return (
                     <div id="build-button">
@@ -48,9 +48,7 @@ class Home extends Component {
 
 const mapState = (state) => {
     return {
-        espnRPI: state.espnRPI,
         espnBPI: state.espnBPI,
-        confChamps: state.confChamps,
         kpi: state.kpi,
         nolan: state.nolan
     }
@@ -59,9 +57,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
     return {
         loadInitialData() {
-            dispatch(fetchRPI());
             dispatch(fetchBPI());
-            dispatch(fetchChamps());
             dispatch(fetchKPI());
             dispatch(fetchNolan());
         }
