@@ -17,7 +17,7 @@ function find68(field) {
             atLarge++;
             teamsInField++;
             newField.push(teamObj.team);
-        } else if (teamObj.isChamp && teamsInField < 68) {
+        } else if (teamObj.isChamp === true && teamsInField < 68) {
             teamsInField++;
             newField.push(teamObj.team);
         } else if (teamObj.isChamp !== true && atLarge === 36 && bubblePop.length < 10) {
