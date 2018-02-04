@@ -27,7 +27,7 @@ class DirectUserBracket extends Component {
                         <h3>{formatDate(bracket.date)}</h3>
                         <NavLink to={`/users/${this.props.user.id}`}><h5 className="direct-user-bracket-name">By {this.props.user.name}</h5></NavLink>
                         <ShareButtons
-                        url={`https://localhost:6800/users/${Number(this.props.match.params.userId)}/brackets/${Number(this.props.match.params.bracketId)}`}
+                        url={`https://brackapptology.herokuapp.com/users/${Number(this.props.match.params.userId)}/brackets/${Number(this.props.match.params.bracketId)}`}
                         title={`${this.props.user.name}'s newest bracketology`}
                         quote={`${this.props.user.name}'s newest bracketology via Brackapptology`}
                         />
