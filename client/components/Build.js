@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addLastFour } from '../store';
 import ArrowUp from 'material-ui/svg-icons/navigation/arrow-upward';
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-downward';
 import SubmitBracket from './SubmitBracket';
@@ -18,9 +17,6 @@ class Build extends Component {
     this.state = {
       teams: {},
       field: [],
-      submitField: [],
-      lastFour: [],
-      bubblePop: [],
       submitted: false,
       blind: false,
       displayAdvanced: false,
@@ -216,7 +212,10 @@ class Build extends Component {
         </div>
         <div id="build-buttons">
           <div id="submit-bracket">
-            <SubmitBracket field={this.state.field} id={this.props.id} />
+            <SubmitBracket
+            field={this.state.field}
+            id={this.props.id}
+            />
           </div>
           <BuildHelp />
         </div>

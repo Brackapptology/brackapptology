@@ -13761,8 +13761,6 @@ var _reactRouterDom = __webpack_require__(30);
 
 var _reactRedux = __webpack_require__(19);
 
-var _store = __webpack_require__(18);
-
 var _arrowUpward = __webpack_require__(513);
 
 var _arrowUpward2 = _interopRequireDefault(_arrowUpward);
@@ -13812,9 +13810,6 @@ var Build = function (_Component) {
     _this.state = {
       teams: {},
       field: [],
-      submitField: [],
-      lastFour: [],
-      bubblePop: [],
       submitted: false,
       blind: false,
       displayAdvanced: false,
@@ -14089,7 +14084,10 @@ var Build = function (_Component) {
           _react2.default.createElement(
             'div',
             { id: 'submit-bracket' },
-            _react2.default.createElement(_SubmitBracket2.default, { field: this.state.field, id: this.props.id })
+            _react2.default.createElement(_SubmitBracket2.default, {
+              field: this.state.field,
+              id: this.props.id
+            })
           ),
           _react2.default.createElement(_BuildHelp2.default, null)
         ),
@@ -28750,7 +28748,7 @@ function find68(field) {
     var bubblePop = [];
 
     oldField.forEach(function (teamObj, idx) {
-        if (!teamObj.isChamp && atLarge < 36 && teamsInField < 68) {
+        if (teamObj.isChamp !== true && atLarge < 36 && teamsInField < 68) {
             if (atLarge > 31) {
                 lastFour.push(teamObj.team);
             }
@@ -28760,7 +28758,7 @@ function find68(field) {
         } else if (teamObj.isChamp && teamsInField < 68) {
             teamsInField++;
             newField.push(teamObj.team);
-        } else if (!teamObj.isChamp && atLarge === 36 && bubblePop.length < 10) {
+        } else if (teamObj.isChamp !== true && atLarge === 36 && bubblePop.length < 10) {
             bubblePop.push(teamObj.team);
         }
     });

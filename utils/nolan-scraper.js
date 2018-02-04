@@ -100,9 +100,8 @@ const nolanScrape = (req, res, next) => {
         .then(($) => {
             const dataArr = [];
             $('td').each(function (idx) {
-                // console.log($(this).css('background-color'))
                 if (idx > 16) {
-                    if ($(this).css('background-color') === 'Blue') {
+                    if ($(this).css('background-color') === 'Blue' || $(this).css('background-color') === 'Black') {
                         dataArr.push(true)
                     } else {
                         dataArr.push($(this).text())

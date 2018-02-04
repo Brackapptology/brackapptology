@@ -10,7 +10,7 @@ function find68(field) {
     let bubblePop = [];
 
     oldField.forEach((teamObj, idx) => {
-        if (!teamObj.isChamp && atLarge < 36 && teamsInField < 68) {
+        if (teamObj.isChamp !== true && atLarge < 36 && teamsInField < 68) {
             if (atLarge > 31) {
                 lastFour.push(teamObj.team);
             }
@@ -20,7 +20,7 @@ function find68(field) {
         } else if (teamObj.isChamp && teamsInField < 68) {
             teamsInField++;
             newField.push(teamObj.team);
-        } else if (!teamObj.isChamp && atLarge === 36 && bubblePop.length < 10) {
+        } else if (teamObj.isChamp !== true && atLarge === 36 && bubblePop.length < 10) {
             bubblePop.push(teamObj.team);
         }
     })
