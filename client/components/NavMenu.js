@@ -6,28 +6,33 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
+import history from '../history';
 
 function NavMenu(props) {
-    const { children, handleClick, id } = props
+    const { children, handleClick, id } = props;
+
+    const navTo = (url) => {
+      history.push(url)
+    }
 
     return (
         <div>
             <IconMenu
                 iconButtonElement={<IconButton><MenuIcon /></IconButton>}
             >
-            <NavLink to="/"><MenuItem value="5" primaryText="Home" /></NavLink>
+            <MenuItem value="5" primaryText="Home" onClick={() => navTo('/')} />
                 {
                     id
                         ?
-                        <div>
-                            <NavLink to={`/users/${id}`}><MenuItem value="3" primaryText="My Page" /></NavLink>
-                            <a href="#" onClick={handleClick}><MenuItem value="1" primaryText="Logout" /></a>
-                        </div>
+                        [
+                            <MenuItem key="1" value="3" primaryText="My Page" onClick={() => navTo(`/users/${id}`)} />,
+                            <MenuItem key="2" value="1" primaryText="Logout" onClick={handleClick} />
+                        ]
                         :
-                        <div>
-                            <NavLink to="/login"><MenuItem value="1" primaryText="Login" /></NavLink>
-                            <NavLink to="/signup"><MenuItem value="2" primaryText="Sign Up" /></NavLink>
-                        </div>
+                        [
+                            <MenuItem key="3" value="1" primaryText="Login" onClick={() => navTo('/login')} />,
+                            <MenuItem key="4" value="2" primaryText="Sign Up" onClick={() => navTo('/signup')} />
+                        ]
                 }
 
             </IconMenu>
