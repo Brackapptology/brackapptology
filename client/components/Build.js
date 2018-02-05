@@ -9,6 +9,7 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import { white, black } from 'material-ui/styles/colors';
 import RaisedButton from 'material-ui/RaisedButton/RaisedButton';
+import axios from 'axios';
 
 class Build extends Component {
 
@@ -22,49 +23,13 @@ class Build extends Component {
       displayAdvanced: false,
       height: 'tall'
     }
+    this.populateTeamCards = this.populateTeamCards.bind(this)
   }
 
   componentDidMount() {
-    this.combineRPIandBPI()
-  }
-
-  combineRPIandBPI() {
-    const bpi = this.props.espnBPI;
-    const nolan = this.props.nolan;
-    const kpi = this.props.kpi;
-
-    for (let j = 0; j < bpi.length; j++) {
-      let bpiObj = bpi[j];
-      for (let i = 0; i < nolan.length; i++) {
-        let nolanObj = nolan[i];
-        if (bpiObj.team === nolanObj.team && !nolanObj.bpi) {
-          nolanObj = Object.assign(nolanObj, bpiObj)
-        }
-      }
-    }
-
-    for (let j = 0; j < kpi.length; j++) {
-      let kpiObj = kpi[j];
-      for (let i = 0; i < nolan.length; i++) {
-        let nolanObj = nolan[i];
-        if (kpiObj.team === nolanObj.team && !nolanObj.kpi) {
-          nolanObj = Object.assign(nolanObj, kpiObj)
-        }
-      }
-    }
-
-    const teams = nolan.map(teamObj => {
-      if ((teamObj.rpi && teamObj.rpi < 86) || teamObj.isChamp === true) {
-        return teamObj
-      }
-    })
-
-    const field = teams.filter(team => {
-      return team !== undefined
-    })
-
-    this.setState({ teams: nolan, field });
-
+    return axios.get('/api/data')
+      .then(res => this.setState({ field: res.data.data }))
+      .catch(console.error)
   }
 
   toggleMetricView() {
@@ -199,6 +164,7 @@ class Build extends Component {
   }
 
   render() {
+    if (this.state.field) {
     return (
       <div id="build-page">
         <div id="blind-button">
@@ -219,21 +185,21 @@ class Build extends Component {
           </div>
           <BuildHelp />
         </div>
-        <div id='field'>
+        <div id="field">
           {
-            this.populateTeamCards.call(this)
+            this.populateTeamCards()
           }
         </div>
       </div>
     )
+  } else {
+    return null
+  }
   }
 }
 
 const mapState = (state) => {
   return {
-    espnBPI: state.espnBPI,
-    kpi: state.kpi,
-    nolan: state.nolan,
     userId: !!state.activeUser.id,
     id: state.activeUser.id
   }

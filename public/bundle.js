@@ -812,30 +812,6 @@ Object.keys(_activeUser).forEach(function (key) {
   });
 });
 
-var _espnBPI = __webpack_require__(293);
-
-Object.keys(_espnBPI).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _espnBPI[key];
-    }
-  });
-});
-
-var _kpi = __webpack_require__(295);
-
-Object.keys(_kpi).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _kpi[key];
-    }
-  });
-});
-
 var _currentUserBrackets = __webpack_require__(291);
 
 Object.keys(_currentUserBrackets).forEach(function (key) {
@@ -932,18 +908,6 @@ Object.keys(_displayEditUser).forEach(function (key) {
   });
 });
 
-var _nolan = __webpack_require__(296);
-
-Object.keys(_nolan).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _nolan[key];
-    }
-  });
-});
-
 var _redux = __webpack_require__(140);
 
 var _reduxLogger = __webpack_require__(611);
@@ -957,12 +921,6 @@ var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 var _reduxDevtoolsExtension = __webpack_require__(607);
 
 var _activeUser2 = _interopRequireDefault(_activeUser);
-
-var _espnBPI2 = _interopRequireDefault(_espnBPI);
-
-var _kpi2 = _interopRequireDefault(_kpi);
-
-var _nolan2 = _interopRequireDefault(_nolan);
 
 var _currentUserBrackets2 = _interopRequireDefault(_currentUserBrackets);
 
@@ -984,9 +942,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var reducer = (0, _redux.combineReducers)({
   activeUser: _activeUser2.default,
-  espnBPI: _espnBPI2.default,
-  kpi: _kpi2.default,
-  nolan: _nolan2.default,
   currentUserBrackets: _currentUserBrackets2.default,
   userLastFours: _userLastFours2.default,
   userPageInfo: _userPage2.default,
@@ -1849,6 +1804,12 @@ var objectKeys = Object.keys || function (obj) {
 /* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = __webpack_require__(257);
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
@@ -1866,7 +1827,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = _Paper2.default;
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1905,12 +1866,6 @@ exports.default = {
   zDepth: _propTypes2.default.oneOf([0, 1, 2, 3, 4, 5])
 
 };
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(257);
 
 /***/ }),
 /* 27 */
@@ -5305,11 +5260,11 @@ var _RenderToLayer = __webpack_require__(223);
 
 var _RenderToLayer2 = _interopRequireDefault(_RenderToLayer);
 
-var _propTypes3 = __webpack_require__(25);
+var _propTypes3 = __webpack_require__(26);
 
 var _propTypes4 = _interopRequireDefault(_propTypes3);
 
-var _Paper = __webpack_require__(24);
+var _Paper = __webpack_require__(25);
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
@@ -7865,7 +7820,7 @@ var _keycode = __webpack_require__(29);
 
 var _keycode2 = _interopRequireDefault(_keycode);
 
-var _propTypes3 = __webpack_require__(25);
+var _propTypes3 = __webpack_require__(26);
 
 var _propTypes4 = _interopRequireDefault(_propTypes3);
 
@@ -8808,7 +8763,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__styles_MuiThemeProvider__ = __webpack_require__(143);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__styles_MuiThemeProvider___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_33__styles_MuiThemeProvider__);
 /* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "MuiThemeProvider", function() { return __WEBPACK_IMPORTED_MODULE_33__styles_MuiThemeProvider___default.a; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__Paper__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__Paper__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__Paper___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_34__Paper__);
 /* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "Paper", function() { return __WEBPACK_IMPORTED_MODULE_34__Paper___default.a; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__Popover__ = __webpack_require__(458);
@@ -10539,7 +10494,7 @@ var _Menu = __webpack_require__(86);
 
 var _Menu2 = _interopRequireDefault(_Menu);
 
-var _propTypes3 = __webpack_require__(25);
+var _propTypes3 = __webpack_require__(26);
 
 var _propTypes4 = _interopRequireDefault(_propTypes3);
 
@@ -10920,7 +10875,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _Paper = __webpack_require__(24);
+var _Paper = __webpack_require__(25);
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
@@ -10928,7 +10883,7 @@ var _transitions = __webpack_require__(11);
 
 var _transitions2 = _interopRequireDefault(_transitions);
 
-var _propTypes3 = __webpack_require__(25);
+var _propTypes3 = __webpack_require__(26);
 
 var _propTypes4 = _interopRequireDefault(_propTypes3);
 
@@ -11467,7 +11422,7 @@ var _TouchRipple = __webpack_require__(225);
 
 var _TouchRipple2 = _interopRequireDefault(_TouchRipple);
 
-var _Paper = __webpack_require__(24);
+var _Paper = __webpack_require__(25);
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
@@ -13791,6 +13746,10 @@ var _RaisedButton = __webpack_require__(207);
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
+var _axios = __webpack_require__(24);
+
+var _axios2 = _interopRequireDefault(_axios);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -13815,52 +13774,18 @@ var Build = function (_Component) {
       displayAdvanced: false,
       height: 'tall'
     };
+    _this.populateTeamCards = _this.populateTeamCards.bind(_this);
     return _this;
   }
 
   _createClass(Build, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.combineRPIandBPI();
-    }
-  }, {
-    key: 'combineRPIandBPI',
-    value: function combineRPIandBPI() {
-      var bpi = this.props.espnBPI;
-      var nolan = this.props.nolan;
-      var kpi = this.props.kpi;
+      var _this2 = this;
 
-      for (var j = 0; j < bpi.length; j++) {
-        var bpiObj = bpi[j];
-        for (var i = 0; i < nolan.length; i++) {
-          var nolanObj = nolan[i];
-          if (bpiObj.team === nolanObj.team && !nolanObj.bpi) {
-            nolanObj = Object.assign(nolanObj, bpiObj);
-          }
-        }
-      }
-
-      for (var _j = 0; _j < kpi.length; _j++) {
-        var kpiObj = kpi[_j];
-        for (var _i = 0; _i < nolan.length; _i++) {
-          var _nolanObj = nolan[_i];
-          if (kpiObj.team === _nolanObj.team && !_nolanObj.kpi) {
-            _nolanObj = Object.assign(_nolanObj, kpiObj);
-          }
-        }
-      }
-
-      var teams = nolan.map(function (teamObj) {
-        if (teamObj.rpi && teamObj.rpi < 86 || teamObj.isChamp === true) {
-          return teamObj;
-        }
-      });
-
-      var field = teams.filter(function (team) {
-        return team !== undefined;
-      });
-
-      this.setState({ teams: nolan, field: field });
+      return _axios2.default.get('/api/data').then(function (res) {
+        return _this2.setState({ field: res.data.data });
+      }).catch(console.error);
     }
   }, {
     key: 'toggleMetricView',
@@ -13872,7 +13797,7 @@ var Build = function (_Component) {
   }, {
     key: 'populateTeamCards',
     value: function populateTeamCards() {
-      var _this2 = this;
+      var _this3 = this;
 
       var field = this.state.field;
 
@@ -13883,8 +13808,8 @@ var Build = function (_Component) {
       return field.map(function (teamObj, idx) {
         return _react2.default.createElement(
           'div',
-          { key: idx, className: 'team-card team-card-' + _this2.state.height },
-          !_this2.state.blind ? _react2.default.createElement(
+          { key: idx, className: 'team-card team-card-' + _this3.state.height },
+          !_this3.state.blind ? _react2.default.createElement(
             'div',
             null,
             _react2.default.createElement(
@@ -13913,10 +13838,10 @@ var Build = function (_Component) {
             'No. ',
             idx + 1
           ),
-          _this2.state.displayAdvanced ? _react2.default.createElement(
+          _this3.state.displayAdvanced ? _react2.default.createElement(
             'div',
             null,
-            _react2.default.createElement(_RaisedButton2.default, { label: '' + metrics, onClick: _this2.toggleMetricView.bind(_this2) }),
+            _react2.default.createElement(_RaisedButton2.default, { label: '' + metrics, onClick: _this3.toggleMetricView.bind(_this3) }),
             _react2.default.createElement(
               'p',
               null,
@@ -13956,7 +13881,7 @@ var Build = function (_Component) {
           ) : _react2.default.createElement(
             'div',
             null,
-            _react2.default.createElement(_RaisedButton2.default, { label: '' + metrics, onClick: _this2.toggleMetricView.bind(_this2) }),
+            _react2.default.createElement(_RaisedButton2.default, { label: '' + metrics, onClick: _this3.toggleMetricView.bind(_this3) }),
             _react2.default.createElement(
               'p',
               null,
@@ -14006,8 +13931,8 @@ var Build = function (_Component) {
               teamObj.group4
             )
           ),
-          idx > 0 ? _react2.default.createElement(_arrowUpward2.default, { onClick: _this2.moveTeam.bind(_this2, idx, true) }) : null,
-          idx < field.length - 1 ? _react2.default.createElement(_arrowDownward2.default, { onClick: _this2.moveTeam.bind(_this2, idx, false) }) : null,
+          idx > 0 ? _react2.default.createElement(_arrowUpward2.default, { onClick: _this3.moveTeam.bind(_this3, idx, true) }) : null,
+          idx < field.length - 1 ? _react2.default.createElement(_arrowDownward2.default, { onClick: _this3.moveTeam.bind(_this3, idx, false) }) : null,
           _react2.default.createElement(
             'div',
             { className: 'quick-rank' },
@@ -14018,8 +13943,8 @@ var Build = function (_Component) {
                 floatingLabelStyle: { textColor: _colors.black },
                 style: { width: 120, textColor: _colors.white }
               },
-              _this2.state.field.map(function (rank, selectIdx) {
-                return _react2.default.createElement(_MenuItem2.default, { key: selectIdx, value: selectIdx, primaryText: selectIdx + 1, onClick: _this2.quickRank.bind(_this2, teamObj, selectIdx) });
+              _this3.state.field.map(function (rank, selectIdx) {
+                return _react2.default.createElement(_MenuItem2.default, { key: selectIdx, value: selectIdx, primaryText: selectIdx + 1, onClick: _this3.quickRank.bind(_this3, teamObj, selectIdx) });
               })
             )
           )
@@ -14070,33 +13995,37 @@ var Build = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
-        'div',
-        { id: 'build-page' },
-        _react2.default.createElement(
+      if (this.state.field) {
+        return _react2.default.createElement(
           'div',
-          { id: 'blind-button' },
-          this.state.blind ? _react2.default.createElement(_RaisedButton2.default, { label: 'Leave Blind Mode', onClick: this.toggleBlind.bind(this) }) : _react2.default.createElement(_RaisedButton2.default, { label: 'Go Blind', onClick: this.toggleBlind.bind(this) })
-        ),
-        _react2.default.createElement(
-          'div',
-          { id: 'build-buttons' },
+          { id: 'build-page' },
           _react2.default.createElement(
             'div',
-            { id: 'submit-bracket' },
-            _react2.default.createElement(_SubmitBracket2.default, {
-              field: this.state.field,
-              id: this.props.id
-            })
+            { id: 'blind-button' },
+            this.state.blind ? _react2.default.createElement(_RaisedButton2.default, { label: 'Leave Blind Mode', onClick: this.toggleBlind.bind(this) }) : _react2.default.createElement(_RaisedButton2.default, { label: 'Go Blind', onClick: this.toggleBlind.bind(this) })
           ),
-          _react2.default.createElement(_BuildHelp2.default, null)
-        ),
-        _react2.default.createElement(
-          'div',
-          { id: 'field' },
-          this.populateTeamCards.call(this)
-        )
-      );
+          _react2.default.createElement(
+            'div',
+            { id: 'build-buttons' },
+            _react2.default.createElement(
+              'div',
+              { id: 'submit-bracket' },
+              _react2.default.createElement(_SubmitBracket2.default, {
+                field: this.state.field,
+                id: this.props.id
+              })
+            ),
+            _react2.default.createElement(_BuildHelp2.default, null)
+          ),
+          _react2.default.createElement(
+            'div',
+            { id: 'field' },
+            this.populateTeamCards()
+          )
+        );
+      } else {
+        return null;
+      }
     }
   }]);
 
@@ -14105,9 +14034,6 @@ var Build = function (_Component) {
 
 var mapState = function mapState(state) {
   return {
-    espnBPI: state.espnBPI,
-    kpi: state.kpi,
-    nolan: state.nolan,
     userId: !!state.activeUser.id,
     id: state.activeUser.id
   };
@@ -18499,7 +18425,7 @@ var _EnhancedButton = __webpack_require__(32);
 
 var _EnhancedButton2 = _interopRequireDefault(_EnhancedButton);
 
-var _Paper = __webpack_require__(24);
+var _Paper = __webpack_require__(25);
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
@@ -26144,7 +26070,7 @@ var _EditUser = __webpack_require__(151);
 
 var _EditUser2 = _interopRequireDefault(_EditUser);
 
-var _axios = __webpack_require__(26);
+var _axios = __webpack_require__(24);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -26707,7 +26633,7 @@ var Home = function (_Component) {
     _createClass(Home, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            this.props.loadInitialData();
+            // this.props.loadInitialData();
         }
     }, {
         key: 'hideButton',
@@ -26717,23 +26643,23 @@ var Home = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            if (this.props.espnBPI.length > 340 && this.props.kpi.length > 340 && this.props.nolan.length > 100) {
-                if (!this.state.hideButton) {
-                    return _react2.default.createElement(
-                        'div',
-                        { id: 'build-button' },
-                        _react2.default.createElement(_RaisedButton2.default, { label: 'Build your bracket', onClick: this.hideButton.bind(this) })
-                    );
-                } else {
-                    return _react2.default.createElement(_Build2.default, null);
-                }
-            } else {
-                return _react2.default.createElement(
-                    'div',
-                    { id: 'progress' },
-                    _react2.default.createElement(_Progress2.default, null)
-                );
-            }
+            // if (this.props.espnBPI.length > 340 && this.props.kpi.length > 340 && this.props.nolan.length > 100) {
+            // if (!this.state.hideButton) {
+            //     return (
+            //         <div id="build-button">
+            //             <RaisedButton label="Build your bracket" onClick={this.hideButton.bind(this)} />
+            //         </div>
+            //     )
+            // } else {
+            return _react2.default.createElement(_Build2.default, null);
+            // }
+            // } else {
+            //     return (
+            //         <div id="progress">
+            //             <Progress />
+            //         </div>
+            //     )
+            // }
         }
     }]);
 
@@ -27956,7 +27882,7 @@ exports.default = function () {
   }
 };
 
-var _axios = __webpack_require__(26);
+var _axios = __webpack_require__(24);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -28044,7 +27970,7 @@ exports.fetchUsers = fetchUsers;
 exports.editUser = editUser;
 exports.default = allUsers;
 
-var _axios = __webpack_require__(26);
+var _axios = __webpack_require__(24);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -28123,7 +28049,7 @@ exports.addBracket = exports.getBrackets = undefined;
 exports.fetchUserBrackets = fetchUserBrackets;
 exports.default = currentUserBracketsReducer;
 
-var _axios = __webpack_require__(26);
+var _axios = __webpack_require__(24);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -28206,159 +28132,7 @@ function displayFormReducer() {
 }
 
 /***/ }),
-/* 293 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.getBPI = getBPI;
-exports.fetchBPI = fetchBPI;
-exports.default = teamsReducer;
-
-var _axios = __webpack_require__(26);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var GET_BPI = 'GET_BPI';
-
-function getBPI(teams) {
-    return {
-        type: GET_BPI,
-        teams: teams
-    };
-}
-
-function fetchBPI() {
-    return function thunk(dispatch) {
-        var page1 = [];
-        var page2 = [];
-        var page3 = [];
-        var page4 = [];
-        var page5 = [];
-        var page6 = [];
-        var page7 = [];
-        var page8 = [];
-        var page9 = [];
-        var page10 = [];
-        var page11 = [];
-        var page12 = [];
-        var page13 = [];
-        var page14 = [];
-        var page15 = [];
-        var newestPage = [];
-
-        return _axios2.default.get('/api/espn/bpi/1').then(function (res) {
-            page1 = res.data;
-            return page1;
-        }).then(function () {
-            return _axios2.default.get('/api/espn/bpi/2');
-        }).then(function (res) {
-            page2 = res.data;
-            newestPage = page1.concat(page2);
-            return newestPage;
-        }).then(function () {
-            return _axios2.default.get('/api/espn/bpi/3');
-        }).then(function (res) {
-            page3 = res.data;
-            newestPage = newestPage.concat(page3);
-            return newestPage;
-        }).then(function () {
-            return _axios2.default.get('/api/espn/bpi/4');
-        }).then(function (res) {
-            page4 = res.data;
-            newestPage = newestPage.concat(page4);
-            return newestPage;
-        }).then(function () {
-            return _axios2.default.get('/api/espn/bpi/5');
-        }).then(function (res) {
-            page5 = res.data;
-            newestPage = newestPage.concat(page5);
-            return newestPage;
-        }).then(function () {
-            return _axios2.default.get('/api/espn/bpi/6');
-        }).then(function (res) {
-            page6 = res.data;
-            newestPage = newestPage.concat(page6);
-            return newestPage;
-        }).then(function () {
-            return _axios2.default.get('/api/espn/bpi/7');
-        }).then(function (res) {
-            page7 = res.data;
-            newestPage = newestPage.concat(page7);
-            return newestPage;
-        }).then(function () {
-            return _axios2.default.get('/api/espn/bpi/8');
-        }).then(function (res) {
-            page8 = res.data;
-            newestPage = newestPage.concat(page8);
-            return newestPage;
-        }).then(function () {
-            return _axios2.default.get('/api/espn/bpi/9');
-        }).then(function (res) {
-            page9 = res.data;
-            newestPage = newestPage.concat(page9);
-            return newestPage;
-        }).then(function () {
-            return _axios2.default.get('/api/espn/bpi/10');
-        }).then(function (res) {
-            page10 = res.data;
-            newestPage = newestPage.concat(page10);
-            return newestPage;
-        }).then(function () {
-            return _axios2.default.get('/api/espn/bpi/11');
-        }).then(function (res) {
-            page11 = res.data;
-            newestPage = newestPage.concat(page11);
-            return newestPage;
-        }).then(function () {
-            return _axios2.default.get('/api/espn/bpi/12');
-        }).then(function (res) {
-            page12 = res.data;
-            newestPage = newestPage.concat(page12);
-            return newestPage;
-        }).then(function () {
-            return _axios2.default.get('/api/espn/bpi/13');
-        }).then(function (res) {
-            page13 = res.data;
-            newestPage = newestPage.concat(page13);
-            return newestPage;
-        }).then(function () {
-            return _axios2.default.get('/api/espn/bpi/14');
-        }).then(function (res) {
-            page14 = res.data;
-            newestPage = newestPage.concat(page14);
-            return newestPage;
-        }).then(function () {
-            return _axios2.default.get('/api/espn/bpi/15');
-        }).then(function (res) {
-            page15 = res.data;
-            newestPage = newestPage.concat(page15);
-            return newestPage;
-        }).then(function (teams) {
-            return dispatch(getBPI(teams));
-        }).catch(console.error);
-    };
-}
-
-function teamsReducer() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    var action = arguments[1];
-
-    switch (action.type) {
-        case GET_BPI:
-            return action.teams;
-        default:
-            return state;
-    }
-}
-
-/***/ }),
+/* 293 */,
 /* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -28372,7 +28146,7 @@ exports.getInactiveUser = undefined;
 exports.fetchInactiveUser = fetchInactiveUser;
 exports.default = inactiveUser;
 
-var _axios = __webpack_require__(26);
+var _axios = __webpack_require__(24);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -28410,105 +28184,8 @@ function inactiveUser() {
 }
 
 /***/ }),
-/* 295 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.getKPI = getKPI;
-exports.fetchKPI = fetchKPI;
-exports.default = kpiReducer;
-
-var _axios = __webpack_require__(26);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var GET_KPI = 'GET_KPI';
-
-function getKPI(teams) {
-    return {
-        type: GET_KPI,
-        teams: teams
-    };
-}
-
-function fetchKPI() {
-    return function thunk(dispatch) {
-        return _axios2.default.get('/api/kpi').then(function (res) {
-            return dispatch(getKPI(res.data));
-        }).catch(console.error);
-    };
-}
-
-function kpiReducer() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    var action = arguments[1];
-
-    switch (action.type) {
-        case GET_KPI:
-            return action.teams;
-        default:
-            return state;
-    }
-}
-
-/***/ }),
-/* 296 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.GET_NOLAN = undefined;
-exports.getNolan = getNolan;
-exports.fetchNolan = fetchNolan;
-exports.default = nolanReducer;
-
-var _axios = __webpack_require__(26);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var GET_NOLAN = exports.GET_NOLAN = 'GET_NOLAN';
-
-function getNolan(teams) {
-    return {
-        type: GET_NOLAN,
-        teams: teams
-    };
-}
-
-function fetchNolan() {
-    return function thunk(dispatch) {
-        return _axios2.default.get('/api/nolan').then(function (res) {
-            return dispatch(getNolan(res.data));
-        }).catch(console.error);
-    };
-}
-
-function nolanReducer() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    var action = arguments[1];
-
-    switch (action.type) {
-        case GET_NOLAN:
-            return action.teams;
-        default:
-            return state;
-    }
-}
-
-/***/ }),
+/* 295 */,
+/* 296 */,
 /* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -28522,7 +28199,7 @@ exports.getUrlBracket = undefined;
 exports.fetchBracket = fetchBracket;
 exports.default = currentUserBracketReducer;
 
-var _axios = __webpack_require__(26);
+var _axios = __webpack_require__(24);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -28617,7 +28294,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.fetchUserPageData = exports.getUserPageInfo = undefined;
 exports.default = userPageInfoReducer;
 
-var _axios = __webpack_require__(26);
+var _axios = __webpack_require__(24);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -28665,7 +28342,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.getBracket = getBracket;
 exports.default = userPageBracket;
 
-var _axios = __webpack_require__(26);
+var _axios = __webpack_require__(24);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -28715,7 +28392,7 @@ function userPageBracket() {
 "use strict";
 
 
-var _axios = __webpack_require__(26);
+var _axios = __webpack_require__(24);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -38775,11 +38452,11 @@ var _menu = __webpack_require__(226);
 
 var _menu2 = _interopRequireDefault(_menu);
 
-var _Paper = __webpack_require__(24);
+var _Paper = __webpack_require__(25);
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
-var _propTypes3 = __webpack_require__(25);
+var _propTypes3 = __webpack_require__(26);
 
 var _propTypes4 = _interopRequireDefault(_propTypes3);
 
@@ -39184,7 +38861,7 @@ var _Popover = __webpack_require__(60);
 
 var _Popover2 = _interopRequireDefault(_Popover);
 
-var _propTypes3 = __webpack_require__(25);
+var _propTypes3 = __webpack_require__(26);
 
 var _propTypes4 = _interopRequireDefault(_propTypes3);
 
@@ -40394,7 +40071,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _Paper = __webpack_require__(24);
+var _Paper = __webpack_require__(25);
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
@@ -44151,7 +43828,7 @@ var _RenderToLayer = __webpack_require__(223);
 
 var _RenderToLayer2 = _interopRequireDefault(_RenderToLayer);
 
-var _Paper = __webpack_require__(24);
+var _Paper = __webpack_require__(25);
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
@@ -44837,11 +44514,11 @@ var _Overlay = __webpack_require__(222);
 
 var _Overlay2 = _interopRequireDefault(_Overlay);
 
-var _Paper = __webpack_require__(24);
+var _Paper = __webpack_require__(25);
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
-var _propTypes3 = __webpack_require__(25);
+var _propTypes3 = __webpack_require__(26);
 
 var _propTypes4 = _interopRequireDefault(_propTypes3);
 
@@ -45377,7 +45054,7 @@ var _IconButton = __webpack_require__(47);
 
 var _IconButton2 = _interopRequireDefault(_IconButton);
 
-var _propTypes3 = __webpack_require__(25);
+var _propTypes3 = __webpack_require__(26);
 
 var _propTypes4 = _interopRequireDefault(_propTypes3);
 
@@ -46400,7 +46077,7 @@ var _FontIcon = __webpack_require__(124);
 
 var _FontIcon2 = _interopRequireDefault(_FontIcon);
 
-var _Paper = __webpack_require__(24);
+var _Paper = __webpack_require__(25);
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
@@ -46410,7 +46087,7 @@ var _warning = __webpack_require__(12);
 
 var _warning2 = _interopRequireDefault(_warning);
 
-var _propTypes3 = __webpack_require__(25);
+var _propTypes3 = __webpack_require__(26);
 
 var _propTypes4 = _interopRequireDefault(_propTypes3);
 
@@ -47152,7 +46829,7 @@ var _transitions = __webpack_require__(11);
 
 var _transitions2 = _interopRequireDefault(_transitions);
 
-var _propTypes3 = __webpack_require__(25);
+var _propTypes3 = __webpack_require__(26);
 
 var _propTypes4 = _interopRequireDefault(_propTypes3);
 
@@ -47547,7 +47224,7 @@ var _events = __webpack_require__(89);
 
 var _events2 = _interopRequireDefault(_events);
 
-var _propTypes3 = __webpack_require__(25);
+var _propTypes3 = __webpack_require__(26);
 
 var _propTypes4 = _interopRequireDefault(_propTypes3);
 
@@ -48356,7 +48033,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _propTypes3 = __webpack_require__(25);
+var _propTypes3 = __webpack_require__(26);
 
 var _propTypes4 = _interopRequireDefault(_propTypes3);
 
@@ -48510,11 +48187,11 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _propTypes3 = __webpack_require__(25);
+var _propTypes3 = __webpack_require__(26);
 
 var _propTypes4 = _interopRequireDefault(_propTypes3);
 
-var _Paper = __webpack_require__(24);
+var _Paper = __webpack_require__(25);
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
@@ -48757,7 +48434,7 @@ var _transitions = __webpack_require__(11);
 
 var _transitions2 = _interopRequireDefault(_transitions);
 
-var _Paper = __webpack_require__(24);
+var _Paper = __webpack_require__(25);
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
@@ -55647,7 +55324,7 @@ var _transitions = __webpack_require__(11);
 
 var _transitions2 = _interopRequireDefault(_transitions);
 
-var _Paper = __webpack_require__(24);
+var _Paper = __webpack_require__(25);
 
 var _Paper2 = _interopRequireDefault(_Paper);
 

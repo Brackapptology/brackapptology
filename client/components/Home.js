@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchRPI, fetchBPI, fetchChamps, fetchKPI, fetchNolan } from '../store/index';
+import { fetchBPI, fetchKPI, fetchNolan } from '../store/index';
 import RaisedButton from 'material-ui/RaisedButton';
 import Progress from './Progress';
 import Build from './Build';
@@ -16,7 +16,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        this.props.loadInitialData();
+        // this.props.loadInitialData();
     }
 
     hideButton() {
@@ -24,25 +24,25 @@ class Home extends Component {
     }
 
     render() {
-        if (this.props.espnBPI.length > 340 && this.props.kpi.length > 340 && this.props.nolan.length > 100) {
-            if (!this.state.hideButton) {
-                return (
-                    <div id="build-button">
-                        <RaisedButton label="Build your bracket" onClick={this.hideButton.bind(this)} />
-                    </div>
-                )
-            } else {
+        // if (this.props.espnBPI.length > 340 && this.props.kpi.length > 340 && this.props.nolan.length > 100) {
+            // if (!this.state.hideButton) {
+            //     return (
+            //         <div id="build-button">
+            //             <RaisedButton label="Build your bracket" onClick={this.hideButton.bind(this)} />
+            //         </div>
+            //     )
+            // } else {
                 return (
                     <Build />
                 )
-            }
-        } else {
-            return (
-                <div id="progress">
-                    <Progress />
-                </div>
-            )
-        }
+            // }
+        // } else {
+        //     return (
+        //         <div id="progress">
+        //             <Progress />
+        //         </div>
+        //     )
+        // }
     }
 }
 

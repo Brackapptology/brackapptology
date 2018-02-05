@@ -6,6 +6,7 @@ router.use('/espn', require('./espn'));
 router.use('/bracket', require('./bracket'));
 router.use('/kpi', require('./kpi'));
 router.use('/nolan', require('./nolan'));
+router.use('/data', require('./fullData'));
 
 router.use((req, res, next) => {
   const error = new Error('Not Found')
