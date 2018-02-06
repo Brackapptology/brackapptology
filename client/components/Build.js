@@ -175,9 +175,7 @@ class Build extends Component {
                 :
                 <RaisedButton label="Go Blind" onClick={this.toggleBlind.bind(this)} />
             }
-          </div>
-          <div id="build-body">
-            <div id="build-buttons">
+            <div >
               <div id="submit-bracket">
                 <SubmitBracket
                   field={this.state.field}
@@ -186,6 +184,8 @@ class Build extends Component {
               </div>
               <BuildHelp />
             </div>
+          </div>
+          <div id="build-body">
             <div id="field">
               {
                 this.populateTeamCards()

@@ -14002,14 +14002,10 @@ var Build = function (_Component) {
           _react2.default.createElement(
             'div',
             { id: 'blind-button' },
-            this.state.blind ? _react2.default.createElement(_RaisedButton2.default, { label: 'Leave Blind Mode', onClick: this.toggleBlind.bind(this) }) : _react2.default.createElement(_RaisedButton2.default, { label: 'Go Blind', onClick: this.toggleBlind.bind(this) })
-          ),
-          _react2.default.createElement(
-            'div',
-            { id: 'build-body' },
+            this.state.blind ? _react2.default.createElement(_RaisedButton2.default, { label: 'Leave Blind Mode', onClick: this.toggleBlind.bind(this) }) : _react2.default.createElement(_RaisedButton2.default, { label: 'Go Blind', onClick: this.toggleBlind.bind(this) }),
             _react2.default.createElement(
               'div',
-              { id: 'build-buttons' },
+              null,
               _react2.default.createElement(
                 'div',
                 { id: 'submit-bracket' },
@@ -14019,7 +14015,11 @@ var Build = function (_Component) {
                 })
               ),
               _react2.default.createElement(_BuildHelp2.default, null)
-            ),
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { id: 'build-body' },
             _react2.default.createElement(
               'div',
               { id: 'field' },

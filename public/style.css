@@ -34,7 +34,7 @@ form div {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin-top: 100px;
+  margin-top: 180px;
 }
 
 .direct-user-bracket-name {
@@ -234,7 +234,7 @@ form div {
 }
 
 #submit-bracket {
-  margin-bottom: 10px;
+  margin: 10px;
 }
 
 #progress {
