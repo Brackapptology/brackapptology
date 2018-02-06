@@ -93,7 +93,7 @@ const startListening = () => {
     seed();
   });
 
-  cron.schedule('10 21 * 1-4 *', function(){
+  cron.schedule('15 21 * 1-4 *', function(){
     seed();
   });
 
