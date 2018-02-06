@@ -25,7 +25,7 @@ const seed = async () => {
 
   let data = combineMetrics(bpi, kpi.data, nolan.data);
 
-  return FullData.findOrCreate({
+  FullData.findOrCreate({
     where: { id: 1 }
   })
     .spread((fullData, isCreated) => {
@@ -36,5 +36,7 @@ const seed = async () => {
     })
     .catch(console.error)
 }
+
+seed();
 
 module.exports = seed;
