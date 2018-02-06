@@ -165,36 +165,38 @@ class Build extends Component {
 
   render() {
     if (this.state.field) {
-    return (
-      <div id="build-page">
-        <div id="blind-button">
-          {
-            this.state.blind
-              ?
-              <RaisedButton label="Leave Blind Mode" onClick={this.toggleBlind.bind(this)} />
-              :
-              <RaisedButton label="Go Blind" onClick={this.toggleBlind.bind(this)} />
-          }
-        </div>
-        <div id="build-buttons">
-          <div id="submit-bracket">
-            <SubmitBracket
-            field={this.state.field}
-            id={this.props.id}
-            />
+      return (
+        <div id="build-page">
+          <div id="blind-button">
+            {
+              this.state.blind
+                ?
+                <RaisedButton label="Leave Blind Mode" onClick={this.toggleBlind.bind(this)} />
+                :
+                <RaisedButton label="Go Blind" onClick={this.toggleBlind.bind(this)} />
+            }
           </div>
-          <BuildHelp />
+          <div id="build-body">
+            <div id="build-buttons">
+              <div id="submit-bracket">
+                <SubmitBracket
+                  field={this.state.field}
+                  id={this.props.id}
+                />
+              </div>
+              <BuildHelp />
+            </div>
+            <div id="field">
+              {
+                this.populateTeamCards()
+              }
+            </div>
+          </div>
         </div>
-        <div id="field">
-          {
-            this.populateTeamCards()
-          }
-        </div>
-      </div>
-    )
-  } else {
-    return null
-  }
+      )
+    } else {
+      return null
+    }
   }
 }
 

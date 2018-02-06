@@ -14006,21 +14006,25 @@ var Build = function (_Component) {
           ),
           _react2.default.createElement(
             'div',
-            { id: 'build-buttons' },
+            { id: 'build-body' },
             _react2.default.createElement(
               'div',
-              { id: 'submit-bracket' },
-              _react2.default.createElement(_SubmitBracket2.default, {
-                field: this.state.field,
-                id: this.props.id
-              })
+              { id: 'build-buttons' },
+              _react2.default.createElement(
+                'div',
+                { id: 'submit-bracket' },
+                _react2.default.createElement(_SubmitBracket2.default, {
+                  field: this.state.field,
+                  id: this.props.id
+                })
+              ),
+              _react2.default.createElement(_BuildHelp2.default, null)
             ),
-            _react2.default.createElement(_BuildHelp2.default, null)
-          ),
-          _react2.default.createElement(
-            'div',
-            { id: 'field' },
-            this.populateTeamCards()
+            _react2.default.createElement(
+              'div',
+              { id: 'field' },
+              this.populateTeamCards()
+            )
           )
         );
       } else {
@@ -26362,6 +26366,11 @@ var BuildHelp = function (_Component) {
                     'li',
                     null,
                     'Don\'t forget about the projected champions, who get automatic bids! Most of them are probably near the bottom.'
+                  ),
+                  _react2.default.createElement(
+                    'li',
+                    null,
+                    'Want to remove any potential biases that come with a team\'s name? Click "Go Blind" for a blind resume test.'
                   ),
                   _react2.default.createElement(
                     'li',

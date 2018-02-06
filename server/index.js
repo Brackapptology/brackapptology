@@ -81,25 +81,25 @@ const startListening = () => {
   // start listening (and create a 'server' object representing our server)
   const server = app.listen(PORT, () => console.log(`Mixing it up on port ${PORT}`))
   
-  cron.schedule('0 1 * 1-4 *', function(){
-    seed();
-  });
+  // cron.schedule('0 1 * 1-4 *', function(){
+  //   seed();
+  // });
 
-  cron.schedule('0 7 * 1-4 *', function(){
-    seed();
-  });
+  // cron.schedule('0 7 * 1-4 *', function(){
+  //   seed();
+  // });
 
-  cron.schedule('47 20 * 1-4 *', function(){
-    seed();
-  });
+  // cron.schedule('47 20 * 1-4 *', function(){
+  //   seed();
+  // });
 
-  cron.schedule('15 21 * 1-4 *', function(){
-    seed();
-  });
+  // cron.schedule('15 21 * 1-4 *', function(){
+  //   seed();
+  // });
 
-  cron.schedule('10 23 * 1-4 *', function(){
-    seed();
-  });
+  // cron.schedule('10 23 * 1-4 *', function(){
+  //   seed();
+  // });
 
 
   // set up our socket control center

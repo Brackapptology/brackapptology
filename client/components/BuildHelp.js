@@ -64,6 +64,7 @@ export default class BuildHelp extends Component {
                   <li>Use the arrows at the bottom of each card to move teams up and down.</li>
                   <li>Want to move a team more than just a few spots? Use the quick rank selector to save time.</li>
                   <li>Don't forget about the projected champions, who get automatic bids! Most of them are probably near the bottom.</li>
+                  <li>Want to remove any potential biases that come with a team's name? Click "Go Blind" for a blind resume test.</li>
                   <li>Hit submit once you've completed your bracketology!</li>
                   <li>And if you need a reminder for any of the above, click "Help" in the bottom-right corner.</li>
                 </ol>
