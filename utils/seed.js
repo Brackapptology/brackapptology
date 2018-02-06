@@ -25,7 +25,7 @@ const seed = async () => {
 
   let data = combineMetrics(bpi, kpi.data, nolan.data);
 
-  FullData.findOrCreate({
+  return FullData.findOrCreate({
     where: { id: 1 }
   })
     .spread((fullData, isCreated) => {
