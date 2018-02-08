@@ -7,7 +7,7 @@ const convertKPItoRPI = (team) => {
     case 'Miami (FL)':
       return 'Miami';
     case "St. Mary's (CA)":
-      return "Saint Mary's";
+      return "St. Mary's";
     case 'Loyola (Chicago)':
       return 'Loyola-Chicago';
     case 'Central Florida':
@@ -17,7 +17,7 @@ const convertKPItoRPI = (team) => {
     case 'Mississippi':
       return 'Ole Miss';
     case 'UC-Santa Barbara':
-      return 'Santa Barbara';
+      return 'UC Santa Barbara';
     case 'UNC-Greensboro':
       return 'UNC Greensboro';
     case 'UC-Davis':
@@ -90,6 +90,8 @@ const convertKPItoRPI = (team) => {
       return 'CSU Northridge';
     case 'Louisiana-Lafayette':
       return 'Louisiana';
+    case 'College of Charleston':
+      return 'Charleston';
     default:
       return team;
   }
