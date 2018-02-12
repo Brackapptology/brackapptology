@@ -51,6 +51,7 @@ export default class BuildHelp extends Component {
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
+          autoScrollBodyContent={true}
         >
           <Tabs
             value={this.state.value}

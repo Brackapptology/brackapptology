@@ -26478,7 +26478,8 @@ var BuildHelp = function (_Component) {
             actions: actions,
             modal: false,
             open: this.state.open,
-            onRequestClose: this.handleClose
+            onRequestClose: this.handleClose,
+            autoScrollBodyContent: true
           },
           _react2.default.createElement(
             _Tabs.Tabs,
