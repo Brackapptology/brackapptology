@@ -3,7 +3,8 @@
 }
 
 body {
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   background-image: url('./chalmers-shot.jpeg');
   background-position: center;
@@ -51,7 +52,8 @@ form div {
   box-shadow: 3px 3px 3px black;
   border-radius: 3px;
   color: white;
-  text-shadow: 2px 2px black;
+  text-shadow: 2px 2px 2px black;
+  font-size: 0.85em;
 }
 
 .team-card-name {
@@ -159,7 +161,7 @@ form div {
   background-color: rgba(255,255,255,0.8);
   padding: 10px;
   left: 82%;
-  height: 670px;
+  height: 762px;
   box-shadow: 3px 3px 3px;
 }
 
@@ -185,7 +187,8 @@ form div {
     padding: 10px;
     border-radius: 3px;
     z-index: 3;
-    text-align: left;
+    text-align: center;
+    color: #797979;
 }
 
 .credential-form-buttons {
