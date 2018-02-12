@@ -105,37 +105,6 @@ form div {
   margin-top: 30px;
 }
 
-@media only screen and (max-width: 500px) {
-  .user-bracket-save {
-    display: inline;
-    margin: 0px;
-    position: inherit;
-  }
-
-  .user-bracket-field {
-    width: 300px;
-    background-color: rgba(255,255,255,0.8);
-    padding: 10px;
-    box-shadow: 3px 3px 3px;
-    position: absolute;
-    left: 50%;
-    margin-left: -150px;
-    top: 13%;
-  }
-
-  .user-bracket-sidebar {
-    background-color: rgba(255,255,255,0.8);
-    padding: 10px;
-    left: 50%;
-    height: 762px;
-    box-shadow: 3px 3px 3px;
-    width: 300px;
-    position: absolute;
-    margin-left: -150px;
-    top: 432%;
-  }
-}
-
 .user-page-header {
   position: relative;
   margin-bottom: 60px;
@@ -182,7 +151,7 @@ form div {
   flex-direction: column;
 }
 
-.user-bracket-field {
+.user-bracket-field, .user-page-bracket-field {
   width: 421px;
   background-color: rgba(255,255,255,0.8);
   margin-right: 20px;
@@ -190,7 +159,7 @@ form div {
   box-shadow: 3px 3px 3px;
 }
 
-.user-bracket-sidebar {
+.user-bracket-sidebar, .user-page-bracket-sidebar {
   background-color: rgba(255,255,255,0.8);
   padding: 10px;
   left: 82%;
@@ -341,4 +310,66 @@ form div {
 
 #bracket-share-buttons {
   display: flex;
+}
+
+@media only screen and (max-width: 500px) {
+  .user-bracket-save {
+    display: inline;
+    margin: 0px;
+    position: inherit;
+  }
+
+  .user-bracket-field {
+    width: 300px;
+    background-color: rgba(255,255,255,0.8);
+    padding: 10px;
+    box-shadow: 3px 3px 3px;
+    position: absolute;
+    left: 50%;
+    margin-left: -150px;
+    top: 13%;
+  }
+
+  .user-page-bracket-field {
+    width: 300px;
+    background-color: rgba(255,255,255,0.8);
+    padding: 10px;
+    box-shadow: 3px 3px 3px;
+    position: absolute;
+    left: 50%;
+    margin-left: -150px;
+    top: 117%;
+  }
+
+  .user-bracket-sidebar {
+    background-color: rgba(255,255,255,0.8);
+    padding: 10px;
+    left: 50%;
+    height: 762px;
+    box-shadow: 3px 3px 3px;
+    width: 300px;
+    position: absolute;
+    margin-left: -150px;
+    top: 441%;
+  }
+
+  .user-page-bracket-sidebar {
+    background-color: rgba(255,255,255,0.8);
+    padding: 10px;
+    left: 50%;
+    height: 762px;
+    box-shadow: 3px 3px 3px;
+    width: 300px;
+    position: absolute;
+    margin-left: -150px;
+    top: 1985%;
+  }
+
+  .user-bracket {
+    position: inherit;
+  }
+
+  .user-page-brackets {
+    margin-left: -140px;
+  }
 }

@@ -8869,7 +8869,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function BracketSidebar(props) {
     return _react2.default.createElement(
         'div',
-        { className: 'user-bracket-sidebar' },
+        { className: 'user-page-bracket-sidebar' },
         _react2.default.createElement(
             'div',
             { className: 'user-bracket-last-four' },
@@ -14291,7 +14291,7 @@ function UserBracket(props) {
             { className: 'user-bracket' },
             _react2.default.createElement(
                 'div',
-                { className: 'user-bracket-field' },
+                { className: 'user-page-bracket-field' },
                 _react2.default.createElement(
                     'h3',
                     null,

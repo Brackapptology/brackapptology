@@ -12,7 +12,7 @@ export default function UserBracket(props) {
         const seedLines = createSeedlines(props.field, props.lastFour);
         return (
             <div className="user-bracket">
-                <div className="user-bracket-field">
+                <div className="user-page-bracket-field">
                     <h3>{formatDate(props.date)}</h3>
                     <ShareButtons
                         url={`https://brackapptology.herokuapp.com${props.url}`}
