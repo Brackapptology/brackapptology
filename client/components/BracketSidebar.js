@@ -3,7 +3,7 @@ import Divider from 'material-ui/Divider';
 
 export default function BracketSidebar(props) {
     return (
-        <div className="user-page-bracket-sidebar">
+        <div className={props.sideType}>
             <div className="user-bracket-last-four">
                 <h3>Last Four In</h3>
                 {

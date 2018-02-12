@@ -33,7 +33,7 @@ class NewBracket extends Component {
                         }
                         <SeedLines seedLines={seedLines} />
                     </div>
-                    <BracketSidebar lastFour={this.props.newBracket.lastFour} field={this.props.newBracket.field} />
+                    <BracketSidebar sideType={'user-bracket-sidebar'} lastFour={this.props.newBracket.lastFour} field={this.props.newBracket.field} />
                 </div>
 
             )

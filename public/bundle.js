@@ -8869,7 +8869,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function BracketSidebar(props) {
     return _react2.default.createElement(
         'div',
-        { className: 'user-page-bracket-sidebar' },
+        { className: props.sideType },
         _react2.default.createElement(
             'div',
             { className: 'user-bracket-last-four' },
@@ -14304,7 +14304,7 @@ function UserBracket(props) {
                 }),
                 _react2.default.createElement(_SeedLines2.default, { seedLines: seedLines })
             ),
-            _react2.default.createElement(_BracketSidebar2.default, { field: props.field, lastFour: props.lastFour })
+            _react2.default.createElement(_BracketSidebar2.default, { sideType: 'user-page-bracket-sidebar', field: props.field, lastFour: props.lastFour })
         );
     } else {
         return null;
@@ -27051,7 +27051,7 @@ var NewBracket = function (_Component) {
                         ),
                         _react2.default.createElement(_SeedLines2.default, { seedLines: seedLines })
                     ),
-                    _react2.default.createElement(_BracketSidebar2.default, { lastFour: this.props.newBracket.lastFour, field: this.props.newBracket.field })
+                    _react2.default.createElement(_BracketSidebar2.default, { sideType: 'user-bracket-sidebar', lastFour: this.props.newBracket.lastFour, field: this.props.newBracket.field })
                 );
             } else {
                 return null;

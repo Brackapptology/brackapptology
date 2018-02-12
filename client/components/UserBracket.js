@@ -21,7 +21,7 @@ export default function UserBracket(props) {
                         />
                     <SeedLines seedLines={seedLines} />
                 </div>
-                <BracketSidebar field={props.field} lastFour={props.lastFour} />
+                <BracketSidebar sideType={'user-page-bracket-sidebar'} field={props.field} lastFour={props.lastFour} />
             </div>
         )
     } else {
