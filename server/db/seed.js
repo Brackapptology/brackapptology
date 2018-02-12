@@ -4,21 +4,12 @@ const db = require('./db');
 const data = {
     users: [
         {
-            name: 'Pauly Paulicap',
-            userName: 'pauly33',
-            isAdmin: false,
-            email: 'pauly@pauly.com',
-            photoUrl: 'https://thenypost.files.wordpress.com/2017/12/pauly_paulicap.jpg?quality=90&strip=all',
-            password: 'pauly'
-        },
-
-        {
-            name: 'Dundrecous Nelson',
-            userName: 'drecyoself',
+            name: 'Ari Kramer',
+            userName: 'ari',
             isAdmin: true,
-            email: 'dundrecous@dundrecous.com',
-            photoUrl: 'http://media.gulflive.com/mississippi-press-sports/photo/9375513-large.jpg',
-            password: 'dundrecous'
+            email: 'arikramer24@gmail.com',
+            photoUrl: 'https://lh3.googleusercontent.com/-T0ByE5iwLY0/AAAAAAAAAAI/AAAAAAAAADI/Ai5EHJERUmQ/photo.jpg?sz=50',
+            googleId: '101391036987203459079'
         }
     ]
 }
