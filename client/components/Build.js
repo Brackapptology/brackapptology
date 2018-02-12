@@ -3,6 +3,7 @@ import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ArrowUp from 'material-ui/svg-icons/navigation/arrow-upward';
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-downward';
+import { Login } from './index';
 import SubmitBracket from './SubmitBracket';
 import BuildHelp from './BuildHelp'
 import SelectField from 'material-ui/SelectField';
@@ -21,9 +22,10 @@ class Build extends Component {
       submitted: false,
       blind: false,
       displayAdvanced: false,
-      height: 'tall'
+      sawLogIn: false
     }
-    this.populateTeamCards = this.populateTeamCards.bind(this)
+    this.populateTeamCards = this.populateTeamCards.bind(this);
+    this.toggleSaw = this.toggleSaw.bind(this);
   }
 
   componentDidMount() {
@@ -33,9 +35,7 @@ class Build extends Component {
   }
 
   toggleMetricView() {
-    let height = '';
-    this.state.height === 'tall' ? height = 'small' : height = 'tall';
-    this.setState({ displayAdvanced: !this.state.displayAdvanced, height })
+    this.setState({ displayAdvanced: !this.state.displayAdvanced })
   }
 
   populateTeamCards() {
@@ -68,7 +68,7 @@ class Build extends Component {
           {
             this.state.displayAdvanced
               ?
-              <div>
+              <div className="animated flipInY">
                 <RaisedButton label={`${metrics}`} onClick={this.toggleMetricView.bind(this)} />
                 <p>BPI: {teamObj.bpi}</p>
                 <p>BPI SOS: {teamObj.sos}</p>
@@ -78,7 +78,7 @@ class Build extends Component {
                 <p>vs. KPI Top 50: {teamObj.top50}</p>
               </div>
               :
-              <div>
+              <div className="animated flipInX">
                 <RaisedButton label={`${metrics}`} onClick={this.toggleMetricView.bind(this)} />
                 <p>Record: {teamObj.record}</p>
                 <p>Home: {teamObj.home}</p>
@@ -94,14 +94,14 @@ class Build extends Component {
           {
             idx > 0
               ?
-              <ArrowUp onClick={this.moveTeam.bind(this, idx, true)} />
+              <ArrowUp className="pointer" onClick={this.moveTeam.bind(this, idx, true)} />
               :
               null
           }
           {
             idx < field.length - 1
               ?
-              <ArrowDown onClick={this.moveTeam.bind(this, idx, false)} />
+              <ArrowDown className="pointer" onClick={this.moveTeam.bind(this, idx, false)} />
               :
               null
           }
@@ -163,7 +163,12 @@ class Build extends Component {
     this.setState({ blind: !this.state.blind })
   }
 
+  toggleSaw() {
+    this.setState({ sawLogIn: !this.state.sawLogIn })
+  }
+
   render() {
+    const { isLoggedIn, id } = this.props;
     if (this.state.field) {
       return (
         <div id="build-page">
@@ -179,10 +184,16 @@ class Build extends Component {
               <div id="submit-bracket">
                 <SubmitBracket
                   field={this.state.field}
-                  id={this.props.id}
+                  id={id}
                 />
               </div>
-              <BuildHelp />
+              {
+                isLoggedIn || this.state.sawLogIn
+                  ?
+                  <BuildHelp />
+                  :
+                  <Login toggleSaw={this.toggleSaw} />
+              }
             </div>
           </div>
           <div id="build-body">
@@ -202,7 +213,7 @@ class Build extends Component {
 
 const mapState = (state) => {
   return {
-    userId: !!state.activeUser.id,
+    isLoggedIn: !!state.activeUser.id,
     id: state.activeUser.id
   }
 }

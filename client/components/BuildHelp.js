@@ -61,6 +61,7 @@ export default class BuildHelp extends Component {
                 <h2 style={styles.headline}>How This Works</h2>
                 <ol>
                   <li>Compare teams by the resumes on their cards.</li>
+                  <li>Toggle between traditional and advanced metrics, using the button on each card.</li>
                   <li>Use the arrows at the bottom of each card to move teams up and down.</li>
                   <li>Want to move a team more than just a few spots? Use the quick rank selector to save time.</li>
                   <li>Don't forget about the projected champions, who get automatic bids! Most of them are probably near the bottom.</li>

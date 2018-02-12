@@ -44,7 +44,7 @@ form div {
 .team-card {
   margin: 10px;
   width: 200px;
-  /* height: 480px; */
+  height: 480px;
   padding-left: 10px;
   padding-bottom: 10px;
   background-color: rgba(117, 117, 117, 0.8);
@@ -52,16 +52,6 @@ form div {
   border-radius: 3px;
   color: white;
   text-shadow: 2px 2px black;
-}
-
-.team-card-tall {
-  height: 480px;
-  /* transition: height .5s linear; */
-}
-
-.team-card-small {
-  height: 415px;
-  transition: height .5s linear;
 }
 
 .team-card-name {
@@ -195,18 +185,49 @@ form div {
     padding: 10px;
     border-radius: 3px;
     z-index: 3;
+    text-align: left;
 }
 
-#google-login-button {
-  height: 40px;
-  background-color: #dd493c;
+.credential-form-buttons {
+  text-align: center;
+}
+
+.form-button {
   font-size: 16px;
   border-radius: 5px;
-  box-shadow: 2px 2px 2px black;
+  border: none;
+  box-shadow: 1px 1px 1px black;
+  margin: 5px;
+  cursor: pointer;
+  height: 30px;
 }
 
-#google-login-button a {
+.edit-button {
+  background-color: #d5d5d5;
+}
+
+.edit-button:hover {
+  background-color: #4f4f4f;
+  color: #d5d5d5;
+}
+
+.hide-button {
+  background-color: #ff5b5b;
   color: white;
+}
+
+.hide-button:hover {
+  background-color: #d5d5d5;
+  color: black;
+}
+
+#google-sign-in {
+  height: 60px;
+}
+
+#facebook-sign-in {
+  height: 72px;
+  margin-top: -14px;
 }
 
 #login-button {
@@ -235,6 +256,10 @@ form div {
 
 #submit-bracket {
   margin: 10px;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 #progress {
