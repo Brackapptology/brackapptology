@@ -68,7 +68,7 @@ export default class BuildHelp extends Component {
                   <li>Don't forget about the projected champions, who get automatic bids! Most of them are probably near the bottom.</li>
                   <li>Want to remove any potential biases that come with a team's name? Click "Go Blind" for a blind resume test.</li>
                   <li>Hit submit once you've completed your bracketology!</li>
-                  <li>And if you need a reminder for any of the above, click "Help" in the bottom-right corner.</li>
+                  <li>And if you need a reminder for any of the above, click the "Help" button.</li>
                 </ol>
               </div>
             </Tab>
