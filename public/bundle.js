@@ -26539,7 +26539,7 @@ var BuildHelp = function (_Component) {
                   _react2.default.createElement(
                     'li',
                     null,
-                    'And if you need a reminder for any of the above, click "Help" in the bottom-right corner.'
+                    'And if you need a reminder for any of the above, click the "Help" button.'
                   )
                 )
               )
