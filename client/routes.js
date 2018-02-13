@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Route, Switch, Router } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
-import { Main, Login, Signup, UserHome, Home, Build, NewBracket, UserPage, DirectUserBracket, Admin } from './components';
+import { Main, Login, Signup, Home, NewBracket, UserPage, DirectUserBracket, Admin } from './components';
 import { me } from './store'
 
 /**
@@ -15,7 +15,7 @@ class Routes extends Component {
   }
 
   render() {
-    const { isLoggedIn } = this.props
+    const { isLoggedIn, isAdmin } = this.props
 
     return (
       <Router history={history}>
@@ -27,12 +27,12 @@ class Routes extends Component {
             <Route path="/new-bracket" component={NewBracket} />
             <Route exact path="/users/:userId" component={UserPage} />
             <Route path="/users/:userId/brackets/:bracketId" component={DirectUserBracket} />
-            
-              isLoggedIn && isAdmin &&
+
+            {isLoggedIn && isAdmin &&
               <Switch>
                 <Route path="/admin" component={Admin} />
-              </Switch>
-            
+              </Switch>}
+
             <Route component={Login} />
           </Switch>
         </Main>
