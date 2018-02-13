@@ -9,6 +9,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const db = require('./db')
 const sessionStore = new SequelizeStore({ db })
 const app = express()
+const PORT = process.env.PORT || 8080;
 const socketio = require('socket.io')
 const cron = require('node-cron');
 const seed = require('../utils/seed');
