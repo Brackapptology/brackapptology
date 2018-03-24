@@ -25200,7 +25200,9 @@ var Routes = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var isLoggedIn = this.props.isLoggedIn;
+      var _props = this.props,
+          isLoggedIn = _props.isLoggedIn,
+          isAdmin = _props.isAdmin;
 
 
       return _react2.default.createElement(
@@ -25218,8 +25220,7 @@ var Routes = function (_Component) {
             _react2.default.createElement(_reactRouterDom.Route, { path: '/new-bracket', component: _components.NewBracket }),
             _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/users/:userId', component: _components.UserPage }),
             _react2.default.createElement(_reactRouterDom.Route, { path: '/users/:userId/brackets/:bracketId', component: _components.DirectUserBracket }),
-            'isLoggedIn && isAdmin &&',
-            _react2.default.createElement(
+            isLoggedIn && isAdmin && _react2.default.createElement(
               _reactRouterDom.Switch,
               null,
               _react2.default.createElement(_reactRouterDom.Route, { path: '/admin', component: _components.Admin })

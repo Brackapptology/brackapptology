@@ -112,15 +112,16 @@ const kpiScrape = (req, res, next) => {
         dataArr.push($(this).text())
       })
 
+      
       const rankings = [];
-      for (let i = 0; i < dataArr.length; i += 17) {
+      for (let i = 0; i < dataArr.length; i += 19) {
         let team = convertKPItoRPI(dataArr[i + 1]);
         let rank = dataArr[i];
-        let top50 = dataArr[i + 6];
-        let home = dataArr[i + 7];
-        let awayNeutral = dataArr[i + 8];
-        let kpiSOS = dataArr[i + 10];
-
+        let top50 = dataArr[i + 8];
+        let home = dataArr[i + 9];
+        let awayNeutral = dataArr[i + 10];
+        let kpiSOS = dataArr[i + 12];
+        
         rankings.push({
           team,
           kpi: rank,
@@ -130,7 +131,7 @@ const kpiScrape = (req, res, next) => {
           kpiSOS
         })
       }
-
+      
       KPI.findOrCreate({
         where: { id: 1 }
       })
